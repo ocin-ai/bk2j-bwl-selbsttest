@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Selbsttest Personal</title>
+<style>
+:root{
+  --navy:#184878; --tint:#eef2f8; --h:#1a1f2b; --t:#2b2f3a; --t2:#454b57; --muted:#6b7280;
+  --line:#d7dae0; --input:#f7f8fa; --bg:#ffffff;
+  --ok:#2e7d4f; --ok-bg:#e8f4ec; --mid:#9a6b00; --mid-bg:#fbf3df; --bad:#b3261e; --bad-bg:#fbeaea;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--t);font:17px/1.5 Calibri,'Source Sans 3','Segoe UI',system-ui,-apple-system,sans-serif}
+header{border-bottom:1px solid var(--navy);padding:10px 16px;display:flex;justify-content:space-between;align-items:baseline;gap:8px;font-size:14px;color:var(--t2)}
+header b{color:var(--t2)}
+header button{font-size:14px}
+main{max-width:680px;margin:0 auto;padding:16px 16px 48px}
+h1{font-size:26px;color:var(--h);margin:8px 0 4px;line-height:1.2}
+h2{font-size:21px;color:var(--h);margin:4px 0 8px;line-height:1.25}
+.kicker{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);font-weight:700}
+.meta{font-size:14px;color:var(--muted)}
+p{margin:.5em 0}
+.box{background:var(--tint);border-left:3px solid var(--navy);padding:10px 12px;margin:12px 0;font-size:15px}
+.chap{display:block;width:100%;text-align:left;border:1px solid var(--line);border-radius:8px;background:#fff;padding:12px 14px;margin:10px 0;cursor:pointer;font:inherit;color:inherit}
+.chap:hover,.chap:focus-visible{border-color:var(--navy)}
+.chap .n{color:var(--navy);font-weight:700}
+.chap .r{float:right;font-size:14px;font-weight:700;padding:1px 8px;border-radius:10px}
+.btn{display:inline-block;font:inherit;font-weight:700;border:1px solid var(--navy);background:var(--navy);color:#fff;border-radius:8px;padding:10px 18px;cursor:pointer;min-height:44px}
+.btn.sec{background:#fff;color:var(--navy)}
+.btn:disabled{opacity:.45;cursor:default}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.prog{height:4px;background:var(--line);border-radius:2px;margin:6px 0 14px;overflow:hidden}
+.prog i{display:block;height:100%;background:var(--navy)}
+.q{font-size:17px;color:var(--h);margin:6px 0 12px}
+.hint{font-size:14px;color:var(--muted);margin-bottom:8px}
+.opt{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin:8px 0;cursor:pointer;background:#fff}
+.opt input{margin-top:4px;width:20px;height:20px;flex:none;accent-color:var(--navy)}
+.opt.sel{border-color:var(--navy);background:var(--tint)}
+.opt.right{border-color:var(--ok);background:var(--ok-bg)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-bg)}
+.opt.missed{border-color:var(--ok);border-style:dashed}
+.opt .why{display:block;font-size:14px;color:var(--t2);margin-top:4px}
+.zu{border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin:8px 0}
+.zu label{display:block;margin-bottom:6px}
+select,input[type=text],textarea{font:inherit;width:100%;border:1px solid var(--line);background:var(--input);border-radius:6px;padding:9px 10px;color:var(--t)}
+select:focus,input:focus,textarea:focus{outline:2px solid var(--navy);outline-offset:1px}
+.zu.right{border-color:var(--ok);background:var(--ok-bg)}
+.zu.wrong{border-color:var(--bad);background:var(--bad-bg)}
+.zu .sol{font-size:14px;color:var(--t2);margin-top:4px}
+.za{display:flex;gap:8px;align-items:center}
+.za input{max-width:180px}
+.fb{border-left:3px solid var(--navy);background:var(--tint);padding:10px 12px;margin:14px 0;font-size:15px}
+.fb .v{font-weight:700;font-size:16px}
+.fb .v.ok{color:var(--ok)} .fb .v.mid{color:var(--mid)} .fb .v.bad{color:var(--bad)}
+.fb .src{color:var(--t2);font-size:14px;margin-top:6px}
+.rel{font-size:13px;color:var(--muted);margin-top:4px}
+textarea{min-height:120px;resize:vertical}
+.check label{display:flex;gap:10px;align-items:flex-start;margin:8px 0}
+.check input{width:20px;height:20px;margin-top:3px;flex:none;accent-color:var(--navy)}
+.badge{display:inline-block;font-weight:700;padding:2px 10px;border-radius:12px;font-size:15px}
+.g{color:var(--ok);background:var(--ok-bg)} .y{color:var(--mid);background:var(--mid-bg)} .rd{color:var(--bad);background:var(--bad-bg)}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:15px}
+th{text-align:left;color:var(--navy);border-bottom:2px solid var(--navy);padding:6px 4px}
+td{border-bottom:1px solid var(--line);padding:8px 4px;vertical-align:top}
+footer{max-width:680px;margin:0 auto;padding:12px 16px 28px;border-top:1px solid var(--line);font-size:13px;color:var(--t2)}
+.sr{position:absolute;left:-9999px}
+</style>
+</head>
+<body>
+<header><span><b>BWL · BK2J</b></span><span>Selbsttest Personal</span></header>
+<main id="app" aria-live="polite"></main>
+<footer>Selbsttest zum Arbeitsskript Personal, Kapitel 1–4 · Stand Oktober 2026 · Es werden keine Daten gespeichert oder übertragen – nach dem Schließen der Seite ist alles weg. Rechtsstand Oktober 2026.</footer>
+<script>
+"use strict";
+/* ===== Inhalte: je Kapitel ein Block. Kapitel 5 später hier anhängen. ===== */
+const CHAPTERS = [
+{ id:1, title:"Personalbedarf", rel:"regelmäßig geprüft: 4 von 6 Terminen (2019–2023)", skript:"Arbeitsskript Kap. 1: Merke-Box, Musterbeispiel, Übungen 1.1 und 1.2",
+items:[
+ {t:"sc", q:"Woraus setzt sich der Bruttopersonalbedarf zusammen?",
+  o:[["aktueller Personalbestand + feststehende Zugänge",0],["Einsatzbedarf + Reservebedarf",1],["Nettopersonalbedarf − feststehende Abgänge",0],["Einsatzbedarf − Personalbestand",0]],
+  e:"Der Bruttobedarf ist der geplante Stellenbestand. Der Reservebedarf deckt erwartbare Ausfälle durch Krankheit, Urlaub oder Fortbildung.", s:"Skript Kap. 1, Merke-Box"},
+ {t:"za", q:"In der Fertigung der Talwerk GmbH arbeiten 18 Vollzeitkräfte, 6 Teilzeitkräfte mit 50 % und 2 Teilzeitkräfte mit 75 %. Wie hoch ist der Personalbestand in Vollzeitstellen?", unit:"Stellen", a:22.5,
+  e:"18 + 6 × 0,5 + 2 × 0,75 = 22,5 Vollzeitstellen. Teilzeitkräfte zählen nach ihrem Stellenanteil, nicht als ganze Köpfe (26 wäre falsch).", s:"Unterricht (Umrechnung in Vollzeitstellen)"},
+ {t:"za", q:"Fertigung der Talwerk GmbH: geplanter Stellenbestand 30,0 Vollzeitstellen. Aktuell: 24 Vollzeitkräfte und 4 Teilzeitkräfte mit 50 %. Fest steht: Ein Mitarbeiter geht in Ruhestand, eine Mitarbeiterin beginnt ihre Elternzeit, ein Mitarbeiter hat gekündigt, eine Vollzeitkraft wechselt in Altersteilzeit mit 50 %. Zwei Auszubildende werden in Vollzeit übernommen, eine Mitarbeiterin kehrt aus der Elternzeit mit 50 % zurück. Ermitteln Sie den Nettopersonalbedarf in Vollzeitstellen.", unit:"Stellen", a:5,
+  e:"Bruttobedarf 30,0 − Bestand 26,0 (24 + 4 × 0,5) + Abgänge 3,5 (1 + 1 + 1 + 0,5) − Zugänge 2,5 (2 + 0,5) = 5,0 Stellen. Typische Fehler: Altersteilzeit als ganzer Abgang (5,5) oder Köpfe statt Stellen gezählt (3,0).", s:"Skript Kap. 1, Musterbeispiel und Übung 1.1"},
+ {t:"zu", q:"Ordnen Sie für den Nettopersonalbedarf der Fertigung zu.", c:["Abgang","Zugang","nicht berücksichtigen"],
+  r:[["Ein Mitarbeiter geht in den Ruhestand.",0],["Eine Auszubildende wird übernommen.",1],["Eine Mitarbeiterin beginnt ihre Elternzeit.",0],["Ein Mitarbeiter kehrt aus der Elternzeit zurück.",1],["Ein Mitarbeiter wechselt aus der Fertigung in den Vertrieb.",0],["Im Vertrieb geht eine Mitarbeiterin in den Ruhestand.",2]],
+  e:"Gerechnet wird je Abteilung. Veränderungen anderer Abteilungen bleiben außen vor; ein Wechsel aus der Abteilung ist für sie ein Abgang.", s:"Skript Kap. 1, Merke-Box (Abgänge und Zugänge)"},
+ {t:"sc", q:"Die Rechnung für das Lager ergibt einen Nettopersonalbedarf von −2,0. Welche Aussage trifft zu?",
+  o:[["Es müssen zwei Mitarbeiter eingestellt werden.",0],["Es besteht ein Personalüberhang von zwei Stellen; denkbar sind z. B. Versetzung, Nutzung der natürlichen Fluktuation oder Abbau von Überstunden.",1],["Das Ergebnis ist ein Rechenfehler, weil der Nettopersonalbedarf nicht negativ sein kann.",0],["Der Reservebedarf ist um zwei Stellen zu erhöhen.",0]],
+  e:"Ein negativer Nettopersonalbedarf bedeutet Personalüberhang: Es sind mehr Mitarbeiter vorhanden, als benötigt werden.", s:"Skript Kap. 1, Lückentext E-1.1"},
+ {t:"mc", q:"Welche Größen sind externe Einflussgrößen auf den Personalbedarf?",
+  o:[["konjunkturell sinkende Auftragslage",1],["Fachkräftemangel auf dem Arbeitsmarkt",1],["Anhebung des gesetzlichen Renteneintrittsalters",1],["Automatisierung einer eigenen Fertigungslinie",0],["hohe Fluktuation in der eigenen Belegschaft",0],["geplante Ausweitung der eigenen Produktion",0]],
+  e:"Extern sind Einflüsse von außerhalb des Unternehmens (Konjunktur, Arbeitsmarkt, Gesetze). Automatisierung, Fluktuation und Produktionsplanung sind interne Größen.", s:"Skript Kap. 1, Übung 1.2"},
+ {t:"open", q:"Erläutern Sie den Unterschied zwischen Brutto- und Nettopersonalbedarf und begründen Sie, warum ein Unternehmen einen Reservebedarf einplant.",
+  m:"Der Bruttopersonalbedarf gibt an, wie viele Stellen insgesamt benötigt werden (Einsatzbedarf + Reservebedarf). Der Nettopersonalbedarf zeigt, wie viele Mitarbeiter tatsächlich zusätzlich beschafft (positiv) bzw. abgebaut (negativ) werden müssen: Bruttobedarf − Bestand + feststehende Abgänge − feststehende Zugänge. Der Reservebedarf deckt erwartbare Ausfälle durch Krankheit, Urlaub oder Fortbildung ab – ohne ihn wäre das geplante Arbeitspensum an jedem Ausfalltag nicht zu schaffen.",
+  k:["Bruttobedarf mit beiden Bestandteilen erklärt","Nettobedarf mit Rechenschema erklärt","Bedeutung von positivem und negativem Ergebnis genannt","Reservebedarf mit Ausfallgründen begründet"]}
+]},
+{ id:2, title:"Personalbeschaffung und -auswahl", rel:"Dauerbrenner: 6 von 6 Terminen (2019–2023)", skript:"Arbeitsskript Kap. 2: Vergleichstabelle E-2.1, Merke-Boxen, Übung 2.1, Exkurs Betriebsrat",
+items:[
+ {t:"mc", q:"Welche Aussagen nennen Vorteile der internen Personalbeschaffung?",
+  o:[["Die Einarbeitungszeit ist kürzer.",1],["Aufstiegschancen motivieren die Belegschaft.",1],["Die Beschaffungskosten sind geringer.",1],["Die Auswahl an Bewerbern ist größer.",0],["Neue Ideen kommen von außen ins Unternehmen.",0],["Betriebsblindheit wird vermieden.",0]],
+  e:"Die drei falschen Aussagen sind Vorteile der externen Beschaffung.", s:"Skript Kap. 2, Vergleichstabelle E-2.1"},
+ {t:"zu", q:"Ordnen Sie jeder Formulierung aus einer Stellenanzeige das betroffene Merkmal nach § 1 AGG zu – oder „kein Verstoß“.", c:["ethnische Herkunft","Geschlecht","Religion oder Weltanschauung","Behinderung","Alter","sexuelle Identität","kein Verstoß"],
+  r:[["„Hausmeister (männlich) gesucht“",1],["„ideal für Berufseinsteiger unter 30“",4],["„Bewerberinnen mit Kopftuch können wir nicht berücksichtigen“",2],["„Bewerber mit westeuropäischem Hintergrund bevorzugt“",0],["„sehr gute Englischkenntnisse für den Exportvertrieb erforderlich“",6]],
+  e:"Eine Stelle darf nicht unter Verstoß gegen § 7 Abs. 1 AGG ausgeschrieben werden (§ 11 AGG). Sprachkenntnisse mit Bezug zur Stelle sind zulässig, die Herkunft nicht. Bei Verstößen drohen Entschädigung und Schadensersatz (§ 15 AGG).", s:"Skript Kap. 2, Merke-Box AGG und Übung 2.1"},
+ {t:"sc", q:"Welche Frage ist im Vorstellungsgespräch für eine Stelle als Buchhalterin zulässig?",
+  o:[["„Planen Sie in nächster Zeit Kinder?“",0],["„Sind Sie Mitglied einer Gewerkschaft?“",0],["„Welche Erfahrung haben Sie mit der Erstellung von Monatsabschlüssen?“",1],["„Welcher Religionsgemeinschaft gehören Sie an?“",0]],
+  e:"Zulässig sind Fragen mit unmittelbarem Bezug zur Tätigkeit. Familienplanung knüpft an das Geschlecht an, Religion ist ein AGG-Merkmal (§ 1 AGG), die Gewerkschaftszugehörigkeit betrifft die Privatsphäre ohne berechtigtes Interesse.", s:"Skript Kap. 2, Merke-Box AGG"},
+ {t:"sc", q:"Welche Aussage trifft auf die Stellenbeschreibung zu?",
+  o:[["Sie wirbt nach außen für eine konkret zu besetzende Stelle.",0],["Sie ist ein betriebsinternes Dokument, das die Stelle dauerhaft und personenunabhängig mit Aufgaben, Befugnissen und Anforderungen beschreibt.",1],["Sie beschreibt die Persönlichkeit des aktuellen Stelleninhabers.",0],["Sie wird nach der Besetzung der Stelle nicht mehr benötigt.",0]],
+  e:"Merksatz: Die Stellenbeschreibung sagt, was die Stelle ist. Die Stellenanzeige sagt, wen wir dafür suchen.", s:"Skript Kap. 2, Merke-Box Stellenbeschreibung und Stellenanzeige"},
+ {t:"sc", q:"Welche Aussage zur Beteiligung des Betriebsrats trifft zu?",
+  o:[["Jeder Betrieb muss einen Betriebsrat haben.",0],["Vor einer Kündigung muss der Betriebsrat angehört werden; entscheiden darf danach der Arbeitgeber.",1],["Bei Einstellungen wählt der Betriebsrat den Bewerber aus.",0],["Der Betriebsrat ist nur bei Kündigungen von Führungskräften zu beteiligen.",0]],
+  e:"Drei Stufen: Information, Anhörung, Mitbestimmung. Bei Kündigungen: Anhörung (§ 102 BetrVG). Bei Einstellungen in Unternehmen mit in der Regel mehr als 20 wahlberechtigten Arbeitnehmern: Zustimmung (§ 99 BetrVG). Ein Betriebsrat kann ab fünf ständigen wahlberechtigten Arbeitnehmern gewählt werden (§ 1 BetrVG) – ein Recht der Belegschaft, keine Pflicht.", s:"Skript Kap. 2, Exkurs Betriebsrat"},
+ {t:"zu", q:"Ordnen Sie die Tätigkeiten den Phasen der Personalauswahl zu.", c:["Planung","Vorauswahl","Auswahlentscheidung"],
+  r:[["Anforderungsprofil aus der Stellenbeschreibung ableiten",0],["Zeitplan und Auswahlinstrumente festlegen",0],["Bewerbungsunterlagen mit den Anforderungen abgleichen",1],["Absagen an ungeeignete Bewerber begründen",1],["Vorstellungsgespräche und Assessment-Center durchführen",2],["Vertragsangebot unterbreiten",2]],
+  e:"Planung → Vorauswahl → Auswahlentscheidung.", s:"Skript Kap. 2, Personalauswahl in drei Schritten"},
+ {t:"open", q:"Die Talwerk GmbH muss die Stelle „Leitung Qualitätssicherung“ besetzen. Ein langjähriger Mitarbeiter der Abteilung interessiert sich für die Stelle. Entscheiden Sie sich begründet für interne oder externe Beschaffung (zwei Argumente) und nennen Sie einen Nachteil Ihrer Wahl.",
+  m:"Beide Entscheidungen sind möglich. Intern: Kandidat und Leistung sind bekannt, die Einarbeitung ist kurz, die Beförderung motiviert die Belegschaft; Nachteil: Betriebsblindheit, die bisherige Stelle muss nachbesetzt werden, mögliche Rivalität. Extern: größere Auswahl, neue Methoden und Sichtweisen; Nachteil: teurer, längere Einarbeitung, Fehlbesetzungsrisiko, der interne Interessent kann demotiviert werden.",
+  k:["klare Entscheidung getroffen","zwei passende Argumente mit Bezug zum Fall","einen Nachteil der eigenen Wahl genannt"]}
+]},
+{ id:3, title:"Arbeitsvertrag", rel:"selten geprüft: 2 von 6 Terminen (2019–2023) – gehört aber zum Bildungsplan", skript:"Arbeitsskript Kap. 3: Tabelle Pflichten, Merke-Box Formvorschriften, Übung 3.1",
+items:[
+ {t:"sc", q:"Eine Sachbearbeiterin der Talwerk GmbH veröffentlicht in einem Online-Forum die internen Kalkulationspreise eines Großauftrags. Gegen welche Pflicht verstößt sie?",
+  o:[["gegen die Fürsorgepflicht",0],["gegen die Treuepflicht (Verschwiegenheit)",1],["gegen keine Pflicht, solange sie ihre Arbeit erledigt",0],["gegen die Vergütungspflicht",0]],
+  e:"Die Treuepflicht verlangt vom Arbeitnehmer Verschwiegenheit über Betriebs- und Geschäftsgeheimnisse und Rücksichtnahme auf die Interessen des Arbeitgebers. Fürsorge- und Vergütungspflicht sind Pflichten des Arbeitgebers.", s:"Skript Kap. 3, Tabelle Pflichten"},
+ {t:"sc", q:"Im unterschriebenen Arbeitsvertrag steht keine Befristung; die Befristung auf ein Jahr wurde nur mündlich vereinbart. Was folgt daraus?",
+  o:[["Der gesamte Arbeitsvertrag ist unwirksam.",0],["Die Befristung gilt, weil beide sie gewollt haben.",0],["Die Befristung ist unwirksam; der Vertrag gilt als auf unbestimmte Zeit geschlossen.",1],["Die Befristung gilt, wenn der Arbeitgeber sie innerhalb eines Monats nachweist.",0]],
+  e:"Der Arbeitsvertrag selbst ist formfrei, die Befristung aber bedarf zu ihrer Wirksamkeit der Schriftform (§ 14 Abs. 4 TzBfG). Eine unwirksame Befristung führt zu einem unbefristeten Vertrag (§ 16 Satz 1 TzBfG).", s:"Skript Kap. 3, Merke-Box Formvorschriften"},
+ {t:"sc", q:"Die Talwerk GmbH schickt einer neuen Mitarbeiterin die wesentlichen Vertragsbedingungen als PDF per E-Mail. Wann genügt das?",
+  o:[["Nie – der Nachweis verlangt stets Papier mit Unterschrift.",0],["Wenn das Dokument zugänglich, speicher- und ausdruckbar ist und der Arbeitgeber zu einem Empfangsnachweis auffordert.",1],["Nur mit qualifizierter elektronischer Signatur.",0],["Immer, auch als Sprachnachricht im Messenger.",0]],
+  e:"Seit 01.01.2025 genügt für den Nachweis die Textform (§ 2 Abs. 1 Satz 2 NachwG). Ältere Lösungen nennen noch die Schriftform.", s:"Skript Kap. 3, Merke-Box Formvorschriften"},
+ {t:"zu", q:"Wessen Pflicht ist das?", c:["Arbeitgeber","Arbeitnehmer"],
+  r:[["Vergütungspflicht",0],["Treuepflicht (Verschwiegenheit, Rücksichtnahme)",1],["Fürsorgepflicht",0],["Arbeitspflicht nach Weisung",1],["Zeugnispflicht bei Beendigung",0],["Unterlassen von Konkurrenztätigkeit",1]],
+  e:"Arbeitsvertrag: Arbeitsleistung gegen Vergütung (§§ 611a, 612 BGB); Zeugnis: § 109 GewO. Ist keine Vergütung vereinbart, gilt die übliche als vereinbart (§ 612 Abs. 2 BGB).", s:"Skript Kap. 3, Tabelle Pflichten"},
+ {t:"sc", q:"In welchem Fall verstößt jemand gegen das gesetzliche Wettbewerbsverbot?",
+  o:[["Eine Industriekauffrau eines Fahrradherstellers jobbt samstags in einer Bäckerei.",0],["Ein Mechaniker eines Fahrradhändlers repariert abends gegen Bezahlung Fahrräder für dessen Kunden.",1],["Ein Mitarbeiter bewirbt sich während der Kündigungsfrist bei einem Konkurrenten.",0],["Eine ehemalige Mitarbeiterin gründet nach dem Ende des Arbeitsverhältnisses ein Konkurrenzunternehmen; ein nachvertragliches Wettbewerbsverbot wurde nicht vereinbart.",0]],
+  e:"Das gesetzliche Wettbewerbsverbot gilt während des Arbeitsverhältnisses und verbietet Konkurrenztätigkeit im Geschäftszweig des Arbeitgebers. Nebentätigkeiten ohne Konkurrenz sind grundsätzlich erlaubt; nach dem Ende gilt ein Wettbewerbsverbot nur, wenn es vertraglich vereinbart wurde.", s:"Skript Kap. 3, Übung 3.1 b"},
+ {t:"mc", q:"Welche Angaben muss der Nachweis der wesentlichen Vertragsbedingungen nach dem Nachweisgesetz enthalten?",
+  o:[["Name und Anschrift der Vertragsparteien",1],["Beginn des Arbeitsverhältnisses",1],["Zusammensetzung und Höhe des Arbeitsentgelts",1],["vereinbarte Arbeitszeit",1],["Familienstand des Arbeitnehmers",0],["Religionszugehörigkeit des Arbeitnehmers",0],["Gesundheitszustand des Arbeitnehmers",0]],
+  e:"§ 2 Abs. 1 Satz 3 NachwG – dazu u. a. Arbeitsort, Tätigkeit, Probezeit, Urlaub und das Kündigungsverfahren. Persönliche Merkmale gehören nicht dazu.", s:"Skript Kap. 3, Merke-Box Nachweisgesetz; Einzelinhalte in der Gesetzestextsammlung"},
+ {t:"open", q:"Erläutern Sie, welche Formvorschriften für den Abschluss eines Arbeitsvertrags gelten.",
+  m:"Der Arbeitsvertrag ist grundsätzlich formfrei, also auch mündlich wirksam. Der Arbeitgeber muss die wesentlichen Vertragsbedingungen nach dem Nachweisgesetz dokumentieren; seit 01.01.2025 genügt die Textform (z. B. PDF per E-Mail, zugänglich, speicher- und druckbar, mit Aufforderung zum Empfangsnachweis). Die Befristung bedarf der Schriftform (§ 14 Abs. 4 TzBfG), sonst gilt der Vertrag als unbefristet.",
+  k:["Formfreiheit genannt","Nachweisgesetz mit Textform erläutert","Befristung: Schriftform und Folge bei Verstoß","Rechtsgrundlagen genannt"]}
+]},
+{ id:4, title:"Kündigung und Kündigungsschutz", rel:"Dauerbrenner: 5 von 6 Terminen (2019–2023)", skript:"Arbeitsskript Kap. 4: Fristentabelle, Merke-Boxen, Tabellen Kündigungsgründe und besonderer Kündigungsschutz, Übungen 4.1–4.3",
+items:[
+ {t:"sc", q:"Frau Ott ist seit 18 Monaten bei der Talwerk GmbH; die Probezeit ist lange beendet. Die ordentliche Kündigung des Arbeitgebers geht ihr am 10.12.2026 zu. Zu welchem Termin wird sie wirksam?",
+  o:[["31.12.2026",0,"Die Frist von 4 Wochen wäre nicht eingehalten."],["07.01.2027",0,"Die Frist ist richtig gezählt, aber nicht auf einen zulässigen Termin (15. oder Monatsende) aufgerundet."],["15.01.2027",1],["31.01.2027",0,"Das wäre die Stufe ab 2 Jahren (1 Monat zum Monatsende) – oder der 15. wurde übersehen."]],
+  e:"Unter zwei Jahren gilt auch für den Arbeitgeber die Grundfrist: 4 Wochen zum 15. oder zum Monatsende (§ 622 Abs. 1 BGB). 10.12.2026 + 28 Tage = 07.01.2027 → nächster zulässiger Termin: 15.01.2027.", s:"Skript Kap. 4, Fristentabelle und Merke-Box"},
+ {t:"sc", q:"Frau Lenz ist seit 14 Jahren bei der Talwerk GmbH und will zum 31.01.2027 selbst kündigen. Wann muss ihre Kündigung dem Arbeitgeber spätestens zugehen?",
+  o:[["31.08.2026",0,"Hier wurde die Staffel des Arbeitgebers (5 Monate) angewandt – sie gilt nicht für den Arbeitnehmer."],["31.12.2026",0,"Hier wurde „ein Monat“ statt 4 Wochen gerechnet."],["03.01.2027",1],["04.01.2027",0,"Einen Tag zu spät: Ab dem 04.01. reichen die 4 Wochen nicht mehr bis zum 31.01."]],
+  e:"Für den Arbeitnehmer gilt immer die Grundfrist von 4 Wochen (28 Tagen) zum 15. oder zum Monatsende (§ 622 Abs. 1 BGB). Die verlängerten Fristen nach Abs. 2 gelten nur für den Arbeitgeber. 31.01.2027 − 28 Tage = 03.01.2027.", s:"Skript Kap. 4, Merke-Box und Übung 4.1 b"},
+ {t:"mc", q:"Welche Aussagen sind richtig?",
+  o:[["Die Kündigung ist eine einseitige, empfangsbedürftige Willenserklärung; sie wird mit dem Zugang wirksam.",1],["Vor einer verhaltensbedingten Kündigung ist in der Regel eine Abmahnung nötig.",1],["Bei einer betriebsbedingten Kündigung muss der Arbeitgeber eine Sozialauswahl treffen.",1],["Eine außerordentliche Kündigung muss mit einer Frist von zwei Wochen ausgesprochen werden.",0],["Eine Kündigung des Arbeitgebers wird erst wirksam, wenn der Arbeitnehmer zustimmt.",0],["Kündigt der Arbeitnehmer, muss er einen Grund nach dem Kündigungsschutzgesetz nennen.",0]],
+  e:"Die außerordentliche Kündigung ist in der Regel fristlos; die zwei Wochen sind die Frist, innerhalb derer sie nach Kenntnis des Grundes erklärt werden muss (§ 626 Abs. 2 BGB). Das KSchG schützt vor der Kündigung durch den Arbeitgeber; für die eigene Kündigung braucht der Arbeitnehmer keinen Grund. Sozialauswahl: § 1 Abs. 3 KSchG.", s:"Skript Kap. 4, Einleitung, Kündigungsgründe, Merke-Box Sozialauswahl"},
+ {t:"sc", q:"Ein Handwerksbetrieb beschäftigt regelmäßig 9 Vollzeitkräfte. Ein Mitarbeiter, seit drei Jahren dort, erhält eine ordentliche Kündigung. Gilt der allgemeine Kündigungsschutz?",
+  o:[["Nein – der Betrieb beschäftigt nicht mehr als 10 Arbeitnehmer.",1],["Ja – das Arbeitsverhältnis besteht länger als sechs Monate.",0],["Ja – das Kündigungsschutzgesetz gilt in jedem Betrieb.",0],["Nein – das Kündigungsschutzgesetz gilt erst nach fünf Jahren Betriebszugehörigkeit.",0]],
+  e:"Beide Voraussetzungen müssen vorliegen: mehr als 10 Arbeitnehmer (§ 23 Abs. 1 KSchG) und mehr als sechs Monate Beschäftigung (§ 1 Abs. 1 KSchG). Hier fehlt die erste.", s:"Skript Kap. 4, allgemeiner Kündigungsschutz"},
+ {t:"zu", q:"Ordnen Sie den Kündigungsgrund zu (§ 1 Abs. 2 KSchG).", c:["personenbedingt","verhaltensbedingt","betriebsbedingt"],
+  r:[["Ein Berufskraftfahrer verliert dauerhaft seine Fahrerlaubnis.",0],["Eine Mitarbeiterin fehlt trotz Abmahnung erneut unentschuldigt.",1],["Die Lackiererei wird stillgelegt.",2],["Ein Mitarbeiter ist dauerhaft krankheitsbedingt arbeitsunfähig.",0],["Ein Mitarbeiter verweigert wiederholt zugewiesene Arbeiten.",1],["Wegen anhaltenden Auftragsrückgangs fallen zwei Stellen weg.",2]],
+  e:"Personenbedingt: vom Arbeitnehmer nicht steuerbar. Verhaltensbedingt: steuerbares Fehlverhalten, in der Regel nach Abmahnung. Betriebsbedingt: Der Arbeitsplatz fällt weg, mit Sozialauswahl.", s:"Skript Kap. 4, Tabelle Kündigungsgründe"},
+ {t:"zu", q:"Ordnen Sie die Rechtsgrundlage des besonderen Kündigungsschutzes zu.", c:["§ 17 MuSchG","§ 18 BEEG","§ 168 SGB IX","§ 15 KSchG","§ 22 BBiG"],
+  r:[["Mitarbeiterin im vierten Schwangerschaftsmonat",0],["Mitarbeiter in Elternzeit",1],["schwerbehinderter Mitarbeiter, seit zwei Jahren im Betrieb",2],["Mitglied des Betriebsrats",3],["Auszubildende nach Ende der Probezeit",4]],
+  e:"Schwangerschaft und Elternzeit: Kündigungsverbot, Ausnahme nur durch die Behörde. Schwerbehinderte: vorherige Zustimmung des Integrationsamts. Betriebsrat: ordentliche Kündigung ausgeschlossen, außerordentliche nur mit Zustimmung (§ 103 BetrVG). Auszubildende: nach der Probezeit nur aus wichtigem Grund.", s:"Skript Kap. 4, Tabelle besonderer Kündigungsschutz, Übung 4.3"},
+ {t:"open", q:"Erläutern Sie den Unterschied zwischen einer personen- und einer verhaltensbedingten Kündigung mit je einem Beispiel. Erklären Sie, warum vor einer verhaltensbedingten Kündigung in der Regel abgemahnt werden muss.",
+  m:"Personenbedingt: Der Grund liegt in der Person, der Arbeitnehmer kann ihn nicht steuern (z. B. dauerhafte krankheitsbedingte Arbeitsunfähigkeit, Verlust der Fahrerlaubnis eines Berufskraftfahrers). Verhaltensbedingt: steuerbares Fehlverhalten (z. B. wiederholtes Zuspätkommen, Arbeitsverweigerung, unentschuldigtes Fehlen). Die Abmahnung rügt das Fehlverhalten und droht die Kündigung an; erst wenn der Arbeitnehmer danach erneut gleichartig verstößt, ist eine negative Zukunftsprognose begründet und die Kündigung sozial gerechtfertigt (§ 1 Abs. 2 KSchG). Bei personenbedingten Gründen wäre eine Abmahnung sinnlos, weil der Arbeitnehmer sein Verhalten nicht ändern kann.",
+  k:["beide Arten mit dem Abgrenzungsmerkmal „steuerbar“ erklärt","je ein passendes Beispiel","Funktion der Abmahnung (Rüge und Kündigungsandrohung)","Zukunftsprognose bzw. mildere Mittel erwähnt"]}
+]}
+];
+
+/* ===== Logik ===== */
+const app = document.getElementById("app");
+const state = { res:{} }; // res[chapId] = {pts, max, open:[checked,total]}
+let cur = null; // {ch, i, pts, open}
+
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function fmt(n){return n.toLocaleString("de-DE",{maximumFractionDigits:2});}
+function level(p){return p>=0.8?["g","fit"]:p>=0.5?["y","Lücken schließen"]:["rd","Kapitel wiederholen"];}
+function autoCount(ch){return ch.items.filter(x=>x.t!=="open").length;}
+
+function home(){
+  cur=null;
+  let h=`<div class="kicker">Betriebswirtschaft · Personal</div><h1>Selbsttest Personal</h1>
+  <p class="meta">Kapitel 1–4 des Arbeitsskripts · ca. 20–25 Minuten</p>
+  <div class="box">Arbeiten Sie die Kapitel nacheinander oder einzeln durch. Nach jeder Aufgabe sehen Sie sofort die Lösung mit Erklärung. Am Ende jedes Kapitels zeigt eine Ampel, wie fit Sie sind.<br>Die Gesetzestextsammlung dürfen Sie benutzen. Es werden keine Daten gespeichert oder übertragen.</div>`;
+  CHAPTERS.forEach(ch=>{
+    const r=state.res[ch.id]; let badge="";
+    if(r){const [c,l]=level(r.pts/r.max); badge=`<span class="r ${c}">${l}</span>`;}
+    h+=`<button class="chap" data-c="${ch.id}">${badge}<span class="n">Kapitel ${ch.id}</span> · ${esc(ch.title)}<div class="rel">${esc(ch.rel)}</div></button>`;
+  });
+  if(Object.keys(state.res).length) h+=`<div class="row"><button class="btn sec" id="sum">Gesamtauswertung</button></div>`;
+  app.innerHTML=h;
+  app.querySelectorAll(".chap").forEach(b=>b.onclick=()=>start(+b.dataset.c));
+  const s=document.getElementById("sum"); if(s) s.onclick=summary;
+  window.scrollTo(0,0);
+}
+
+function start(id){
+  const ch=CHAPTERS.find(c=>c.id===id);
+  cur={ch, i:0, pts:0, open:[0,0], order:ch.items.map(it=>it.o?shuffle(it.o.map((x,k)=>k)):null)};
+  show();
+}
+
+function show(){
+  const {ch,i}=cur, it=ch.items[i], n=ch.items.length;
+  let h=`<div class="kicker">Kapitel ${ch.id} · ${esc(ch.title)}</div>
+  <div class="meta">Aufgabe ${i+1} von ${n}${it.t==="open"?" · offene Aufgabe":""}</div>
+  <div class="prog"><i style="width:${(i/n)*100}%"></i></div>
+  <div class="q">${esc(it.q)}</div>`;
+  if(it.t==="sc"||it.t==="mc"){
+    h+=`<div class="hint">${it.t==="sc"?"Eine Antwort ist richtig.":"Mehrere Antworten sind richtig."}</div>`;
+    cur.order[i].forEach(k=>{
+      h+=`<label class="opt" data-k="${k}"><input type="${it.t==="sc"?"radio":"checkbox"}" name="o" value="${k}"><span>${esc(it.o[k][0])}<span class="why"></span></span></label>`;
+    });
+  } else if(it.t==="zu"){
+    it.r.forEach((row,k)=>{
+      h+=`<div class="zu" data-k="${k}"><label for="z${k}">${esc(row[0])}</label><select id="z${k}"><option value="">– bitte wählen –</option>${it.c.map((c,j)=>`<option value="${j}">${esc(c)}</option>`).join("")}</select><div class="sol"></div></div>`;
+    });
+  } else if(it.t==="za"){
+    h+=`<div class="za"><label class="sr" for="za">Ergebnis</label><input id="za" type="text" inputmode="decimal" autocomplete="off" placeholder="z. B. 12,5"><span>${esc(it.unit)}</span></div>`;
+  } else if(it.t==="open"){
+    h+=`<div class="hint">Formulieren Sie Ihre Antwort wie in der Prüfung – auf Papier oder hier im Feld. Das Feld wird nicht gespeichert.</div><textarea aria-label="Ihre Antwort"></textarea>`;
+  }
+  h+=`<div id="fb"></div><div class="row" id="act">
+    <button class="btn" id="chk">${it.t==="open"?"Musterlösung anzeigen":"Prüfen"}</button>
+    <button class="btn sec" id="back">Zur Übersicht</button></div>`;
+  app.innerHTML=h;
+  app.querySelectorAll(".opt input").forEach(inp=>inp.onchange=()=>app.querySelectorAll(".opt").forEach(l=>l.classList.toggle("sel",l.querySelector("input").checked)));
+  document.getElementById("chk").onclick=check;
+  document.getElementById("back").onclick=home;
+  const za=document.getElementById("za"); if(za) za.addEventListener("keydown",e=>{if(e.key==="Enter")check();});
+  window.scrollTo(0,0);
+}
+
+function verdict(p){return p>=0.999?["ok","Richtig."]:p>0?["mid","Teilweise richtig."]:["bad","Leider nicht richtig."];}
+
+function check(){
+  const {ch,i}=cur, it=ch.items[i]; let p=0, extra="";
+  if(it.t==="sc"||it.t==="mc"){
+    const chosen=[...app.querySelectorAll(".opt input")].filter(x=>x.checked).map(x=>+x.value);
+    if(!chosen.length){alert0("Bitte wählen Sie mindestens eine Antwort.");return;}
+    const nTrue=it.o.filter(x=>x[1]).length;
+    let good=0,bad=0;
+    app.querySelectorAll(".opt").forEach(l=>{
+      const k=+l.dataset.k, isT=it.o[k][1], sel=chosen.includes(k);
+      l.querySelector("input").disabled=true; l.classList.remove("sel");
+      if(sel&&isT){l.classList.add("right");good++;}
+      else if(sel&&!isT){l.classList.add("wrong");bad++; if(it.o[k][2]) l.querySelector(".why").textContent=it.o[k][2];}
+      else if(!sel&&isT){l.classList.add("missed");}
+    });
+    p = it.t==="sc" ? (good?1:0) : Math.max(0,(good-bad)/nTrue);
+    if(it.t==="mc") extra=`Richtig waren ${nTrue} Aussagen. Sie hatten ${good} richtige und ${bad} falsche Kreuze. Gestrichelt umrandet: richtig, aber nicht angekreuzt.`;
+  } else if(it.t==="zu"){
+    const sels=[...app.querySelectorAll(".zu select")];
+    if(sels.some(s=>s.value==="")){alert0("Bitte ordnen Sie jede Zeile zu.");return;}
+    let good=0;
+    sels.forEach((s,k)=>{const ok=+s.value===it.r[k][1]; const box=s.parentNode; s.disabled=true;
+      box.classList.add(ok?"right":"wrong"); if(ok)good++; else box.querySelector(".sol").textContent="Richtig: "+it.c[it.r[k][1]];});
+    p=good/it.r.length; extra=`${good} von ${it.r.length} Zuordnungen richtig.`;
+  } else if(it.t==="za"){
+    const inp=document.getElementById("za"); let raw=inp.value.trim().replace(/\s/g,"");
+    raw = raw.includes(",") ? raw.replace(/\./g,"").replace(",",".") : raw;
+    const v=parseFloat(raw);
+    if(inp.value.trim()===""||isNaN(v)){alert0("Bitte geben Sie eine Zahl ein.");return;}
+    inp.disabled=true; p=Math.abs(v-it.a)<0.001?1:0;
+    extra=`Ihre Eingabe: ${fmt(v)} · Lösung: ${fmt(it.a)} ${esc(it.unit)}`;
+  } else if(it.t==="open"){
+    app.querySelector("textarea").readOnly=true;
+    document.getElementById("fb").innerHTML=`<div class="fb"><div class="v">Musterlösung</div><p>${esc(it.m)}</p></div>
+      <div class="check"><div class="hint">Haken Sie ab, was Ihre Antwort enthält:</div>${it.k.map((k,j)=>`<label><input type="checkbox" data-j="${j}"><span>${esc(k)}</span></label>`).join("")}</div>`;
+    nextBtn(()=>{const c=app.querySelectorAll(".check input:checked").length; cur.open=[cur.open[0]+c,cur.open[1]+it.k.length];});
+    return;
+  }
+  cur.pts+=p;
+  const [cls,txt]=verdict(p);
+  document.getElementById("fb").innerHTML=`<div class="fb"><div class="v ${cls}">${txt}</div>${extra?`<p>${extra}</p>`:""}<p>${esc(it.e)}</p><div class="src">Nachlesen: ${esc(it.s)}</div></div>`;
+  nextBtn();
+}
+
+function alert0(msg){document.getElementById("fb").innerHTML=`<div class="fb"><div class="v bad">${esc(msg)}</div></div>`;}
+
+function nextBtn(before){
+  const last=cur.i===cur.ch.items.length-1;
+  document.getElementById("act").innerHTML=`<button class="btn" id="nx">${last?"Auswertung":"Weiter"}</button><button class="btn sec" id="back">Zur Übersicht</button>`;
+  document.getElementById("back").onclick=home;
+  document.getElementById("nx").onclick=()=>{ if(before) before(); if(last) result(); else {cur.i++; show();} };
+  document.getElementById("nx").focus({preventScroll:true});
+}
+
+function result(){
+  const {ch}=cur, max=autoCount(ch);
+  state.res[ch.id]={pts:cur.pts,max,open:cur.open};
+  const q=cur.pts/max, [c,l]=level(q);
+  const next=CHAPTERS.find(x=>x.id>ch.id);
+  let h=`<div class="kicker">Kapitel ${ch.id} · ${esc(ch.title)}</div><h2>Auswertung</h2>
+  <p><span class="badge ${c}">${l}</span></p>
+  <p>${fmt(cur.pts)} von ${max} Punkten (${Math.round(q*100)} %) in den automatisch ausgewerteten Aufgaben.</p>
+  ${cur.open[1]?`<p>Offene Aufgabe – Ihre Selbsteinschätzung: ${cur.open[0]} von ${cur.open[1]} Punkten der Checkliste erfüllt.</p>`:""}
+  <div class="box">${q>=0.8?"Gut vorbereitet. Wiederholen Sie trotzdem die Aufgaben, bei denen Sie unsicher waren.":q>=0.5?"Die Grundlagen sitzen, es gibt aber Lücken. Arbeiten Sie die falsch gelösten Aufgaben im Skript nach.":"Hier fehlt noch einiges. Wiederholen Sie das Kapitel im Skript und machen Sie den Test danach noch einmal."}<br><b>Nachlesen:</b> ${esc(ch.skript)}</div>
+  <p class="rel">Prüfungsrelevanz: ${esc(ch.rel)}</p>
+  <div class="row">${next?`<button class="btn" id="nx">Weiter mit Kapitel ${next.id}</button>`:`<button class="btn" id="sum">Gesamtauswertung</button>`}
+  <button class="btn sec" id="again">Kapitel wiederholen</button><button class="btn sec" id="home">Zur Übersicht</button></div>`;
+  app.innerHTML=h;
+  if(next) document.getElementById("nx").onclick=()=>start(next.id); else document.getElementById("sum").onclick=summary;
+  document.getElementById("again").onclick=()=>start(ch.id);
+  document.getElementById("home").onclick=home;
+  window.scrollTo(0,0);
+}
+
+function summary(){
+  let h=`<div class="kicker">Selbsttest Personal</div><h2>Gesamtauswertung</h2>
+  <table><thead><tr><th>Kapitel</th><th>Ergebnis</th><th>Stand</th></tr></thead><tbody>`;
+  CHAPTERS.forEach(ch=>{const r=state.res[ch.id];
+    if(r){const [c,l]=level(r.pts/r.max); h+=`<tr><td>${ch.id} · ${esc(ch.title)}</td><td>${Math.round(r.pts/r.max*100)} %</td><td><span class="badge ${c}">${l}</span></td></tr>`;}
+    else h+=`<tr><td>${ch.id} · ${esc(ch.title)}</td><td>–</td><td class="meta">noch nicht bearbeitet</td></tr>`;});
+  h+=`</tbody></table><div class="box">Tipp: Notieren Sie sich die Kapitel mit Gelb oder Rot und arbeiten Sie sie mit dem Skript nach. Das Ergebnis wird nicht gespeichert – machen Sie bei Bedarf einen Screenshot.</div>
+  <div class="row"><button class="btn sec" id="home">Zur Übersicht</button></div>`;
+  app.innerHTML=h; document.getElementById("home").onclick=home; window.scrollTo(0,0);
+}
+
+home();
+</script>
+</body>
+</html>
