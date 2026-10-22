@@ -72,38 +72,52 @@ footer{max-width:680px;margin:0 auto;padding:12px 16px 28px;border-top:1px solid
 <body>
 <header><span><b>BWL · BK2J</b></span><span>Selbsttest Personal</span></header>
 <main id="app" aria-live="polite"></main>
-<footer>Selbsttest zum Arbeitsskript Personal, Kapitel 1–4 · Stand Oktober 2026 · Es werden keine Daten gespeichert oder übertragen – nach dem Schließen der Seite ist alles weg. Rechtsstand Oktober 2026.</footer>
+<footer>Selbsttest zum Arbeitsskript Personal, Kapitel 1–5 · Version 3 · Stand Oktober 2026 · Es werden keine Daten gespeichert oder übertragen – nach dem Schließen der Seite ist alles weg. Rechtsstand Oktober 2026.</footer>
 <script>
 "use strict";
-/* ===== Inhalte: je Kapitel ein Block. Kapitel 5 später hier anhängen. ===== */
+/* ===== Inhalte: je Kapitel ein Block. Weitere Kapitel hier anhängen. ===== */
 const CHAPTERS = [
-{ id:1, title:"Personalbedarf", rel:"regelmäßig geprüft: 4 von 6 Terminen (2019–2023)", skript:"Arbeitsskript Kap. 1: Merke-Box, Musterbeispiel, Übungen 1.1 und 1.2",
+{ id:1, title:"Personalbedarf",
+intro:[["Bruttopersonalbedarf","Wie viele Stellen soll die Abteilung im Planungszeitraum insgesamt haben? In Aufgaben heißt das meist „geplanter Stellenbestand“ oder „Planstellen“.<br>Ist nur der aktuelle Stellenbestand angegeben: aktueller Stellenbestand + Mehrbedarf − Minderbedarf"],
+ ["Mehrbedarf / Minderbedarf","Mehrbedarf: zusätzliche Stellen, z. B. wegen eines Großauftrags oder einer neuen Abteilung. Minderbedarf: Stellen fallen weg, z. B. durch Automatisierung oder Auftragsrückgang."],
+ ["Stellenbestand ≠ Personalbestand","Stellenbestand = Zahl der Stellen (Planstellen). Personalbestand = Zahl der Mitarbeiter, die tatsächlich da sind. Beides kann auseinanderfallen, z. B. bei unbesetzten Stellen."],
+ ["Nettopersonalbedarf","Wie viele Mitarbeiter müssen tatsächlich eingestellt (positives Ergebnis) oder abgebaut werden (negatives Ergebnis)?<br>Bruttopersonalbedarf − aktueller Personalbestand + feststehende Abgänge − feststehende Zugänge"],
+ ["Vollzeitstellen","Teilzeitkräfte zählen anteilig: Eine Kraft mit 50 % ist 0,5 Stellen."],
+ ["Hinweis Reservebedarf","Im Skript taucht der Begriff Reservebedarf auf: Stellen, die man zusätzlich einplant, weil Mitarbeiter krank sind, Urlaub haben oder auf Fortbildung sind. Er ist im geplanten Stellenbestand bereits enthalten – Sie müssen ihn nicht gesondert rechnen."]],
+rel:"regelmäßig geprüft: 4 von 6 Terminen (2019–2023)", skript:"Arbeitsskript Kap. 1: Merke-Box, Musterbeispiel, Übungen 1.1 und 1.2",
 items:[
- {t:"sc", q:"Woraus setzt sich der Bruttopersonalbedarf zusammen?",
-  o:[["aktueller Personalbestand + feststehende Zugänge",0],["Einsatzbedarf + Reservebedarf",1],["Nettopersonalbedarf − feststehende Abgänge",0],["Einsatzbedarf − Personalbestand",0]],
-  e:"Der Bruttobedarf ist der geplante Stellenbestand. Der Reservebedarf deckt erwartbare Ausfälle durch Krankheit, Urlaub oder Fortbildung.", s:"Skript Kap. 1, Merke-Box"},
+ {t:"sc", q:"Was gibt der Bruttopersonalbedarf an?",
+  o:[["wie viele Mitarbeiter zurzeit im Unternehmen beschäftigt sind",0],["wie viele Stellen im Planungszeitraum insgesamt besetzt sein sollen",1],["wie viele Mitarbeiter im Planungszeitraum neu eingestellt werden müssen",0],["wie viele Mitarbeiter im Planungszeitraum das Unternehmen verlassen",0]],
+  e:"Bruttopersonalbedarf = geplanter Stellenbestand. Die anderen Antworten beschreiben den Personalbestand, den Nettopersonalbedarf und die Abgänge.", s:"Skript Kap. 1, Merke-Box"},
  {t:"za", q:"In der Fertigung der Talwerk GmbH arbeiten 18 Vollzeitkräfte, 6 Teilzeitkräfte mit 50 % und 2 Teilzeitkräfte mit 75 %. Wie hoch ist der Personalbestand in Vollzeitstellen?", unit:"Stellen", a:22.5,
   e:"18 + 6 × 0,5 + 2 × 0,75 = 22,5 Vollzeitstellen. Teilzeitkräfte zählen nach ihrem Stellenanteil, nicht als ganze Köpfe (26 wäre falsch).", s:"Unterricht (Umrechnung in Vollzeitstellen)"},
- {t:"za", q:"Fertigung der Talwerk GmbH: geplanter Stellenbestand 30,0 Vollzeitstellen. Aktuell: 24 Vollzeitkräfte und 4 Teilzeitkräfte mit 50 %. Fest steht: Ein Mitarbeiter geht in Ruhestand, eine Mitarbeiterin beginnt ihre Elternzeit, ein Mitarbeiter hat gekündigt, eine Vollzeitkraft wechselt in Altersteilzeit mit 50 %. Zwei Auszubildende werden in Vollzeit übernommen, eine Mitarbeiterin kehrt aus der Elternzeit mit 50 % zurück. Ermitteln Sie den Nettopersonalbedarf in Vollzeitstellen.", unit:"Stellen", a:5,
-  e:"Bruttobedarf 30,0 − Bestand 26,0 (24 + 4 × 0,5) + Abgänge 3,5 (1 + 1 + 1 + 0,5) − Zugänge 2,5 (2 + 0,5) = 5,0 Stellen. Typische Fehler: Altersteilzeit als ganzer Abgang (5,5) oder Köpfe statt Stellen gezählt (3,0).", s:"Skript Kap. 1, Musterbeispiel und Übung 1.1"},
- {t:"zu", q:"Ordnen Sie für den Nettopersonalbedarf der Fertigung zu.", c:["Abgang","Zugang","nicht berücksichtigen"],
-  r:[["Ein Mitarbeiter geht in den Ruhestand.",0],["Eine Auszubildende wird übernommen.",1],["Eine Mitarbeiterin beginnt ihre Elternzeit.",0],["Ein Mitarbeiter kehrt aus der Elternzeit zurück.",1],["Ein Mitarbeiter wechselt aus der Fertigung in den Vertrieb.",0],["Im Vertrieb geht eine Mitarbeiterin in den Ruhestand.",2]],
-  e:"Gerechnet wird je Abteilung. Veränderungen anderer Abteilungen bleiben außen vor; ein Wechsel aus der Abteilung ist für sie ein Abgang.", s:"Skript Kap. 1, Merke-Box (Abgänge und Zugänge)"},
+ {t:"za", q:"Fertigung der Talwerk GmbH: Der aktuelle Stellenbestand beträgt 28 Vollzeitstellen. Wegen eines Großauftrags werden 3 zusätzliche Stellen eingeplant; durch eine neue Maschine fällt 1 Stelle weg. Beschäftigt sind zurzeit 24 Vollzeitkräfte und 4 Teilzeitkräfte mit 50 %. Fest steht: Ein Mitarbeiter geht in Ruhestand, eine Mitarbeiterin beginnt ihre Elternzeit, ein Mitarbeiter hat gekündigt, eine Vollzeitkraft wechselt in Altersteilzeit mit 50 %. Zwei Auszubildende werden in Vollzeit übernommen, eine Mitarbeiterin kehrt aus der Elternzeit mit 50 % zurück. Ermitteln Sie den Nettopersonalbedarf in Vollzeitstellen.", unit:"Stellen", a:5,
+  e:"Bruttobedarf 30,0 (28 + 3 Mehrbedarf − 1 Minderbedarf) − Personalbestand 26,0 (24 + 4 × 0,5) + Abgänge 3,5 (1 + 1 + 1 + 0,5) − Zugänge 2,5 (2 + 0,5) = 5,0 Stellen. Typische Fehler: Stellenbestand 28 als Personalbestand verwendet (3,0), Altersteilzeit als ganzer Abgang (5,5), Köpfe statt Stellen gezählt (3,0) oder Mehr-/Minderbedarf vergessen (3,0).", s:"Skript Kap. 1, Musterbeispiel und Übung 1.1"},
+ {t:"zu", q:"Ordnen Sie zu: Wie geht das Ereignis in die Personalbedarfsrechnung der Fertigung ein?", c:["Mehrbedarf","Minderbedarf","Abgang","Zugang"],
+  r:[["Ein Mitarbeiter geht in den Ruhestand.",2],["Wegen eines neuen Kunden werden zwei zusätzliche Stellen eingeplant.",0],["Eine Auszubildende wird übernommen.",3],["Durch eine neue Verpackungsmaschine fallen drei Stellen weg.",1],["Eine Mitarbeiterin beginnt ihre Elternzeit.",2],["Ein Mitarbeiter kehrt aus der Elternzeit zurück.",3]],
+  e:"Mehr- und Minderbedarf verändern die Zahl der Stellen und damit den Bruttopersonalbedarf. Abgänge und Zugänge verändern die Zahl der Mitarbeiter und gehen in den Nettopersonalbedarf ein.", s:"Skript Kap. 1, Merke-Box (Abgänge und Zugänge); Mehr-/Minderbedarf: Unterricht"},
  {t:"sc", q:"Die Rechnung für das Lager ergibt einen Nettopersonalbedarf von −2,0. Welche Aussage trifft zu?",
-  o:[["Es müssen zwei Mitarbeiter eingestellt werden.",0],["Es besteht ein Personalüberhang von zwei Stellen; denkbar sind z. B. Versetzung, Nutzung der natürlichen Fluktuation oder Abbau von Überstunden.",1],["Das Ergebnis ist ein Rechenfehler, weil der Nettopersonalbedarf nicht negativ sein kann.",0],["Der Reservebedarf ist um zwei Stellen zu erhöhen.",0]],
-  e:"Ein negativer Nettopersonalbedarf bedeutet Personalüberhang: Es sind mehr Mitarbeiter vorhanden, als benötigt werden.", s:"Skript Kap. 1, Lückentext E-1.1"},
+  o:[["Es müssen zwei Mitarbeiter eingestellt werden, um den Bedarf zu decken.",0],["Es gibt einen Personalüberhang von zwei Stellen, z. B. Abbau über Versetzung.",1],["Das Ergebnis ist falsch, weil der Nettobedarf nie negativ sein kann.",0],["Im Lager fehlen zwei Mitarbeiter, die extern beschafft werden müssen.",0]],
+  e:"Ein negativer Nettopersonalbedarf bedeutet Personalüberhang: Es sind mehr Mitarbeiter vorhanden, als benötigt werden. Fehlen Mitarbeiter, ist das Ergebnis positiv.", s:"Skript Kap. 1, Lückentext E-1.1"},
  {t:"mc", q:"Welche Größen sind externe Einflussgrößen auf den Personalbedarf?",
   o:[["konjunkturell sinkende Auftragslage",1],["Fachkräftemangel auf dem Arbeitsmarkt",1],["Anhebung des gesetzlichen Renteneintrittsalters",1],["Automatisierung einer eigenen Fertigungslinie",0],["hohe Fluktuation in der eigenen Belegschaft",0],["geplante Ausweitung der eigenen Produktion",0]],
   e:"Extern sind Einflüsse von außerhalb des Unternehmens (Konjunktur, Arbeitsmarkt, Gesetze). Automatisierung, Fluktuation und Produktionsplanung sind interne Größen.", s:"Skript Kap. 1, Übung 1.2"},
- {t:"open", q:"Erläutern Sie den Unterschied zwischen Brutto- und Nettopersonalbedarf und begründen Sie, warum ein Unternehmen einen Reservebedarf einplant.",
-  m:"Der Bruttopersonalbedarf gibt an, wie viele Stellen insgesamt benötigt werden (Einsatzbedarf + Reservebedarf). Der Nettopersonalbedarf zeigt, wie viele Mitarbeiter tatsächlich zusätzlich beschafft (positiv) bzw. abgebaut (negativ) werden müssen: Bruttobedarf − Bestand + feststehende Abgänge − feststehende Zugänge. Der Reservebedarf deckt erwartbare Ausfälle durch Krankheit, Urlaub oder Fortbildung ab – ohne ihn wäre das geplante Arbeitspensum an jedem Ausfalltag nicht zu schaffen.",
-  k:["Bruttobedarf mit beiden Bestandteilen erklärt","Nettobedarf mit Rechenschema erklärt","Bedeutung von positivem und negativem Ergebnis genannt","Reservebedarf mit Ausfallgründen begründet"]}
+ {t:"open", q:"Erläutern Sie den Unterschied zwischen Brutto- und Nettopersonalbedarf. Erklären Sie, was ein positives und was ein negatives Ergebnis beim Nettopersonalbedarf bedeutet.",
+  m:"Der Bruttopersonalbedarf gibt an, wie viele Stellen im Planungszeitraum insgesamt besetzt sein sollen (geplanter Stellenbestand). Der Nettopersonalbedarf zeigt, wie viele Mitarbeiter tatsächlich beschafft oder abgebaut werden müssen: Bruttobedarf − aktueller Bestand + feststehende Abgänge − feststehende Zugänge. Positives Ergebnis: Personalunterdeckung – es müssen Mitarbeiter eingestellt werden (z. B. extern, Übernahme von Auszubildenden, Aufstockung von Teilzeit). Negatives Ergebnis: Personalüberhang – es sind mehr Mitarbeiter da als nötig (z. B. Versetzung, natürliche Fluktuation nutzen, Überstunden abbauen).",
+  k:["Bruttobedarf als geplanter Stellenbestand erklärt","Nettobedarf mit Rechenschema erklärt","positives Ergebnis als Unterdeckung gedeutet","negatives Ergebnis als Überhang gedeutet"]}
 ]},
-{ id:2, title:"Personalbeschaffung und -auswahl", rel:"Dauerbrenner: 6 von 6 Terminen (2019–2023)", skript:"Arbeitsskript Kap. 2: Vergleichstabelle E-2.1, Merke-Boxen, Übung 2.1, Exkurs Betriebsrat",
+{ id:2, title:"Personalbeschaffung und -auswahl",
+intro:[["AGG","Allgemeines Gleichbehandlungsgesetz: verbietet Benachteiligung wegen ethnischer Herkunft, Geschlecht, Religion oder Weltanschauung, Behinderung, Alter oder sexueller Identität – schon in der Stellenanzeige und im Vorstellungsgespräch."],
+ ["BetrVG","Betriebsverfassungsgesetz: regelt die Rechte des Betriebsrats, der gewählten Vertretung der Belegschaft."],
+ ["intern / extern","Interne Beschaffung: Stelle wird mit jemandem aus dem Unternehmen besetzt. Externe Beschaffung: Bewerber kommen von außen."]],
+rel:"Dauerbrenner: 6 von 6 Terminen (2019–2023)", skript:"Arbeitsskript Kap. 2: Vergleichstabelle E-2.1, Merke-Boxen, Übung 2.1, Exkurs Betriebsrat",
 items:[
  {t:"mc", q:"Welche Aussagen nennen Vorteile der internen Personalbeschaffung?",
   o:[["Die Einarbeitungszeit ist kürzer.",1],["Aufstiegschancen motivieren die Belegschaft.",1],["Die Beschaffungskosten sind geringer.",1],["Die Auswahl an Bewerbern ist größer.",0],["Neue Ideen kommen von außen ins Unternehmen.",0],["Betriebsblindheit wird vermieden.",0]],
   e:"Die drei falschen Aussagen sind Vorteile der externen Beschaffung.", s:"Skript Kap. 2, Vergleichstabelle E-2.1"},
+ {t:"sc", q:"Welche Absicht verfolgt das Allgemeine Gleichbehandlungsgesetz (AGG)?",
+  o:[["Alle Beschäftigten eines Betriebs sollen bei gleicher Arbeitszeit gleich viel verdienen.",0],["Niemand soll z. B. wegen Herkunft, Geschlecht, Religion, Behinderung, Alter oder sexueller Identität benachteiligt werden.",1],["Unternehmen sollen bei Einstellungen eine feste Frauenquote einhalten.",0],["Bewerber sollen ausschließlich nach Schul- und Prüfungsnoten ausgewählt werden.",0]],
+  e:"§ 1 AGG nennt das Ziel und die sechs Merkmale. Das Gesetz gilt vom Bewerbungsverfahren bis zur Beendigung des Arbeitsverhältnisses.", s:"Skript Kap. 2, Merke-Box AGG"},
  {t:"zu", q:"Ordnen Sie jeder Formulierung aus einer Stellenanzeige das betroffene Merkmal nach § 1 AGG zu – oder „kein Verstoß“.", c:["ethnische Herkunft","Geschlecht","Religion oder Weltanschauung","Behinderung","Alter","sexuelle Identität","kein Verstoß"],
   r:[["„Hausmeister (männlich) gesucht“",1],["„ideal für Berufseinsteiger unter 30“",4],["„Bewerberinnen mit Kopftuch können wir nicht berücksichtigen“",2],["„Bewerber mit westeuropäischem Hintergrund bevorzugt“",0],["„sehr gute Englischkenntnisse für den Exportvertrieb erforderlich“",6]],
   e:"Eine Stelle darf nicht unter Verstoß gegen § 7 Abs. 1 AGG ausgeschrieben werden (§ 11 AGG). Sprachkenntnisse mit Bezug zur Stelle sind zulässig, die Herkunft nicht. Bei Verstößen drohen Entschädigung und Schadensersatz (§ 15 AGG).", s:"Skript Kap. 2, Merke-Box AGG und Übung 2.1"},
@@ -111,10 +125,10 @@ items:[
   o:[["„Planen Sie in nächster Zeit Kinder?“",0],["„Sind Sie Mitglied einer Gewerkschaft?“",0],["„Welche Erfahrung haben Sie mit der Erstellung von Monatsabschlüssen?“",1],["„Welcher Religionsgemeinschaft gehören Sie an?“",0]],
   e:"Zulässig sind Fragen mit unmittelbarem Bezug zur Tätigkeit. Familienplanung knüpft an das Geschlecht an, Religion ist ein AGG-Merkmal (§ 1 AGG), die Gewerkschaftszugehörigkeit betrifft die Privatsphäre ohne berechtigtes Interesse.", s:"Skript Kap. 2, Merke-Box AGG"},
  {t:"sc", q:"Welche Aussage trifft auf die Stellenbeschreibung zu?",
-  o:[["Sie wirbt nach außen für eine konkret zu besetzende Stelle.",0],["Sie ist ein betriebsinternes Dokument, das die Stelle dauerhaft und personenunabhängig mit Aufgaben, Befugnissen und Anforderungen beschreibt.",1],["Sie beschreibt die Persönlichkeit des aktuellen Stelleninhabers.",0],["Sie wird nach der Besetzung der Stelle nicht mehr benötigt.",0]],
+  o:[["Sie wirbt nach außen um Bewerber für eine konkret zu besetzende Stelle.",0],["Sie beschreibt intern und dauerhaft Aufgaben, Befugnisse und Anforderungen der Stelle.",1],["Sie beschreibt die Persönlichkeit und Leistung des aktuellen Stelleninhabers.",0],["Sie wird erstellt, wenn die Stelle frei wird, und danach nicht mehr gebraucht.",0]],
   e:"Merksatz: Die Stellenbeschreibung sagt, was die Stelle ist. Die Stellenanzeige sagt, wen wir dafür suchen.", s:"Skript Kap. 2, Merke-Box Stellenbeschreibung und Stellenanzeige"},
  {t:"sc", q:"Welche Aussage zur Beteiligung des Betriebsrats trifft zu?",
-  o:[["Jeder Betrieb muss einen Betriebsrat haben.",0],["Vor einer Kündigung muss der Betriebsrat angehört werden; entscheiden darf danach der Arbeitgeber.",1],["Bei Einstellungen wählt der Betriebsrat den Bewerber aus.",0],["Der Betriebsrat ist nur bei Kündigungen von Führungskräften zu beteiligen.",0]],
+  o:[["Jeder Betrieb ist gesetzlich verpflichtet, einen Betriebsrat einzurichten.",0],["Vor jeder Kündigung ist er anzuhören; entscheiden darf danach der Arbeitgeber.",1],["Bei Einstellungen wählt der Betriebsrat den geeigneten Bewerber selbst aus.",0],["Er ist nur bei Kündigungen von Führungskräften zu beteiligen.",0]],
   e:"Drei Stufen: Information, Anhörung, Mitbestimmung. Bei Kündigungen: Anhörung (§ 102 BetrVG). Bei Einstellungen in Unternehmen mit in der Regel mehr als 20 wahlberechtigten Arbeitnehmern: Zustimmung (§ 99 BetrVG). Ein Betriebsrat kann ab fünf ständigen wahlberechtigten Arbeitnehmern gewählt werden (§ 1 BetrVG) – ein Recht der Belegschaft, keine Pflicht.", s:"Skript Kap. 2, Exkurs Betriebsrat"},
  {t:"zu", q:"Ordnen Sie die Tätigkeiten den Phasen der Personalauswahl zu.", c:["Planung","Vorauswahl","Auswahlentscheidung"],
   r:[["Anforderungsprofil aus der Stellenbeschreibung ableiten",0],["Zeitplan und Auswahlinstrumente festlegen",0],["Bewerbungsunterlagen mit den Anforderungen abgleichen",1],["Absagen an ungeeignete Bewerber begründen",1],["Vorstellungsgespräche und Assessment-Center durchführen",2],["Vertragsangebot unterbreiten",2]],
@@ -123,31 +137,44 @@ items:[
   m:"Beide Entscheidungen sind möglich. Intern: Kandidat und Leistung sind bekannt, die Einarbeitung ist kurz, die Beförderung motiviert die Belegschaft; Nachteil: Betriebsblindheit, die bisherige Stelle muss nachbesetzt werden, mögliche Rivalität. Extern: größere Auswahl, neue Methoden und Sichtweisen; Nachteil: teurer, längere Einarbeitung, Fehlbesetzungsrisiko, der interne Interessent kann demotiviert werden.",
   k:["klare Entscheidung getroffen","zwei passende Argumente mit Bezug zum Fall","einen Nachteil der eigenen Wahl genannt"]}
 ]},
-{ id:3, title:"Arbeitsvertrag", rel:"selten geprüft: 2 von 6 Terminen (2019–2023) – gehört aber zum Bildungsplan", skript:"Arbeitsskript Kap. 3: Tabelle Pflichten, Merke-Box Formvorschriften, Übung 3.1",
+{ id:3, title:"Arbeitsvertrag",
+intro:[["BGB","Bürgerliches Gesetzbuch: regelt den Arbeitsvertrag, die Vergütung und die Kündigungsfristen."],
+ ["NachwG","Nachweisgesetz: Der Arbeitgeber muss die wichtigsten Vertragsbedingungen schriftlich bzw. in Textform festhalten."],
+ ["TzBfG","Teilzeit- und Befristungsgesetz: regelt u. a. befristete Arbeitsverträge."],
+ ["Schriftform / Textform","Schriftform: Papier mit eigenhändiger Unterschrift. Textform: lesbare Erklärung ohne Unterschrift, z. B. E-Mail oder PDF."]],
+rel:"selten geprüft: 2 von 6 Terminen (2019–2023) – gehört aber zum Bildungsplan", skript:"Arbeitsskript Kap. 3: Tabelle Pflichten, Merke-Box Formvorschriften, Übung 3.1",
 items:[
+ {t:"sc", q:"Ein Bewerber und die Talwerk GmbH einigen sich am Telefon über Tätigkeit, Gehalt und Arbeitsbeginn. Etwas Schriftliches gibt es noch nicht. Welche Aussage trifft zu?",
+  o:[["Es gibt noch keinen Arbeitsvertrag, weil dafür die Schriftform nötig ist.",0],["Der Vertrag ist wirksam; die Bedingungen müssen aber noch nachgewiesen werden.",1],["Der Vertrag wird erst wirksam, wenn der Betriebsrat schriftlich zustimmt.",0],["Ein mündlicher Arbeitsvertrag ist nur bei Aushilfen und Minijobs zulässig.",0]],
+  e:"Der Arbeitsvertrag kommt durch zwei übereinstimmende Willenserklärungen zustande – Angebot und Annahme – und ist grundsätzlich formfrei. Die Pflicht, die Bedingungen festzuhalten, folgt aus dem Nachweisgesetz (§ 2 NachwG).", s:"Skript Kap. 3, Einleitung und Merke-Box Formvorschriften"},
  {t:"sc", q:"Eine Sachbearbeiterin der Talwerk GmbH veröffentlicht in einem Online-Forum die internen Kalkulationspreise eines Großauftrags. Gegen welche Pflicht verstößt sie?",
   o:[["gegen die Fürsorgepflicht",0],["gegen die Treuepflicht (Verschwiegenheit)",1],["gegen keine Pflicht, solange sie ihre Arbeit erledigt",0],["gegen die Vergütungspflicht",0]],
   e:"Die Treuepflicht verlangt vom Arbeitnehmer Verschwiegenheit über Betriebs- und Geschäftsgeheimnisse und Rücksichtnahme auf die Interessen des Arbeitgebers. Fürsorge- und Vergütungspflicht sind Pflichten des Arbeitgebers.", s:"Skript Kap. 3, Tabelle Pflichten"},
- {t:"sc", q:"Im unterschriebenen Arbeitsvertrag steht keine Befristung; die Befristung auf ein Jahr wurde nur mündlich vereinbart. Was folgt daraus?",
-  o:[["Der gesamte Arbeitsvertrag ist unwirksam.",0],["Die Befristung gilt, weil beide sie gewollt haben.",0],["Die Befristung ist unwirksam; der Vertrag gilt als auf unbestimmte Zeit geschlossen.",1],["Die Befristung gilt, wenn der Arbeitgeber sie innerhalb eines Monats nachweist.",0]],
-  e:"Der Arbeitsvertrag selbst ist formfrei, die Befristung aber bedarf zu ihrer Wirksamkeit der Schriftform (§ 14 Abs. 4 TzBfG). Eine unwirksame Befristung führt zu einem unbefristeten Vertrag (§ 16 Satz 1 TzBfG).", s:"Skript Kap. 3, Merke-Box Formvorschriften"},
+ {t:"sc", q:"Ein Schichtleiter weist einen Maschinenführer an, die Schutzabdeckung einer Presse abzunehmen, damit es schneller geht. Der Maschinenführer weigert sich. Wie ist das zu beurteilen?",
+  o:[["Er verletzt seine Arbeitspflicht, weil er Weisungen immer befolgen muss.",0],["Er handelt richtig: Die Weisung verstößt gegen die Fürsorgepflicht des Arbeitgebers.",1],["Er handelt richtig, weil Arbeitnehmer jede unbequeme Weisung ablehnen dürfen.",0],["Er verletzt seine Treuepflicht, weil er dem Betrieb wirtschaftlich schadet.",0]],
+  e:"Der Arbeitnehmer muss Weisungen grundsätzlich befolgen (Arbeitspflicht, § 611a BGB). Das Weisungsrecht endet aber dort, wo der Arbeitgeber seine Fürsorgepflicht verletzt: Er muss Leben und Gesundheit seiner Beschäftigten schützen. Eine Weisung, die eine Schutzeinrichtung außer Kraft setzt, muss nicht befolgt werden.", s:"Skript Kap. 3, Tabelle Pflichten"},
  {t:"sc", q:"Die Talwerk GmbH schickt einer neuen Mitarbeiterin die wesentlichen Vertragsbedingungen als PDF per E-Mail. Wann genügt das?",
-  o:[["Nie – der Nachweis verlangt stets Papier mit Unterschrift.",0],["Wenn das Dokument zugänglich, speicher- und ausdruckbar ist und der Arbeitgeber zu einem Empfangsnachweis auffordert.",1],["Nur mit qualifizierter elektronischer Signatur.",0],["Immer, auch als Sprachnachricht im Messenger.",0]],
+  o:[["Nie – der Nachweis verlangt immer Papier mit eigenhändiger Unterschrift.",0],["Wenn es speicher- und druckbar ist und ein Empfangsnachweis verlangt wird.",1],["Nur wenn das PDF eine qualifizierte elektronische Signatur trägt.",0],["Immer – auch eine Sprachnachricht im Messenger würde genügen.",0]],
   e:"Seit 01.01.2025 genügt für den Nachweis die Textform (§ 2 Abs. 1 Satz 2 NachwG). Ältere Lösungen nennen noch die Schriftform.", s:"Skript Kap. 3, Merke-Box Formvorschriften"},
  {t:"zu", q:"Wessen Pflicht ist das?", c:["Arbeitgeber","Arbeitnehmer"],
   r:[["Vergütungspflicht",0],["Treuepflicht (Verschwiegenheit, Rücksichtnahme)",1],["Fürsorgepflicht",0],["Arbeitspflicht nach Weisung",1],["Zeugnispflicht bei Beendigung",0],["Unterlassen von Konkurrenztätigkeit",1]],
   e:"Arbeitsvertrag: Arbeitsleistung gegen Vergütung (§§ 611a, 612 BGB); Zeugnis: § 109 GewO. Ist keine Vergütung vereinbart, gilt die übliche als vereinbart (§ 612 Abs. 2 BGB).", s:"Skript Kap. 3, Tabelle Pflichten"},
  {t:"sc", q:"In welchem Fall verstößt jemand gegen das gesetzliche Wettbewerbsverbot?",
-  o:[["Eine Industriekauffrau eines Fahrradherstellers jobbt samstags in einer Bäckerei.",0],["Ein Mechaniker eines Fahrradhändlers repariert abends gegen Bezahlung Fahrräder für dessen Kunden.",1],["Ein Mitarbeiter bewirbt sich während der Kündigungsfrist bei einem Konkurrenten.",0],["Eine ehemalige Mitarbeiterin gründet nach dem Ende des Arbeitsverhältnisses ein Konkurrenzunternehmen; ein nachvertragliches Wettbewerbsverbot wurde nicht vereinbart.",0]],
-  e:"Das gesetzliche Wettbewerbsverbot gilt während des Arbeitsverhältnisses und verbietet Konkurrenztätigkeit im Geschäftszweig des Arbeitgebers. Nebentätigkeiten ohne Konkurrenz sind grundsätzlich erlaubt; nach dem Ende gilt ein Wettbewerbsverbot nur, wenn es vertraglich vereinbart wurde.", s:"Skript Kap. 3, Übung 3.1 b"},
+  o:[["Eine Industriekauffrau eines Fahrradherstellers jobbt samstags in einer Bäckerei.",0],["Ein Mechaniker eines Fahrradhändlers repariert abends privat Räder von dessen Kunden.",1],["Ein Mitarbeiter bewirbt sich während seiner Kündigungsfrist bei einem Konkurrenten.",0],["Eine frühere Mitarbeiterin gründet nach ihrem Ausscheiden eine Konkurrenzfirma.",0]],
+  e:"Das gesetzliche Wettbewerbsverbot gilt während des Arbeitsverhältnisses und verbietet Konkurrenztätigkeit im Geschäftszweig des Arbeitgebers. Nebentätigkeiten ohne Konkurrenz sind grundsätzlich erlaubt; nach dem Ende gilt ein Wettbewerbsverbot nur, wenn es ausdrücklich vertraglich vereinbart wurde (nachvertragliches Wettbewerbsverbot) – davon ist hier nicht die Rede.", s:"Skript Kap. 3, Übung 3.1 b"},
  {t:"mc", q:"Welche Angaben muss der Nachweis der wesentlichen Vertragsbedingungen nach dem Nachweisgesetz enthalten?",
-  o:[["Name und Anschrift der Vertragsparteien",1],["Beginn des Arbeitsverhältnisses",1],["Zusammensetzung und Höhe des Arbeitsentgelts",1],["vereinbarte Arbeitszeit",1],["Familienstand des Arbeitnehmers",0],["Religionszugehörigkeit des Arbeitnehmers",0],["Gesundheitszustand des Arbeitnehmers",0]],
+  o:[["Familienstand des Arbeitnehmers",0],["Beginn des Arbeitsverhältnisses",1],["Religionszugehörigkeit des Arbeitnehmers",0],["Zusammensetzung und Höhe des Arbeitsentgelts",1],["Gesundheitszustand des Arbeitnehmers",0],["Name und Anschrift der Vertragsparteien",1],["Höhe des Gehalts beim früheren Arbeitgeber",0],["vereinbarte Arbeitszeit",1]],
   e:"§ 2 Abs. 1 Satz 3 NachwG – dazu u. a. Arbeitsort, Tätigkeit, Probezeit, Urlaub und das Kündigungsverfahren. Persönliche Merkmale gehören nicht dazu.", s:"Skript Kap. 3, Merke-Box Nachweisgesetz; Einzelinhalte in der Gesetzestextsammlung"},
  {t:"open", q:"Erläutern Sie, welche Formvorschriften für den Abschluss eines Arbeitsvertrags gelten.",
   m:"Der Arbeitsvertrag ist grundsätzlich formfrei, also auch mündlich wirksam. Der Arbeitgeber muss die wesentlichen Vertragsbedingungen nach dem Nachweisgesetz dokumentieren; seit 01.01.2025 genügt die Textform (z. B. PDF per E-Mail, zugänglich, speicher- und druckbar, mit Aufforderung zum Empfangsnachweis). Die Befristung bedarf der Schriftform (§ 14 Abs. 4 TzBfG), sonst gilt der Vertrag als unbefristet.",
   k:["Formfreiheit genannt","Nachweisgesetz mit Textform erläutert","Befristung: Schriftform und Folge bei Verstoß","Rechtsgrundlagen genannt"]}
 ]},
-{ id:4, title:"Kündigung und Kündigungsschutz", rel:"Dauerbrenner: 5 von 6 Terminen (2019–2023)", skript:"Arbeitsskript Kap. 4: Fristentabelle, Merke-Boxen, Tabellen Kündigungsgründe und besonderer Kündigungsschutz, Übungen 4.1–4.3",
+{ id:4, title:"Kündigung und Kündigungsschutz",
+intro:[["BGB","Bürgerliches Gesetzbuch: Kündigungsfristen (§ 622), Schriftform (§ 623), fristlose Kündigung (§ 626)."],
+ ["KSchG","Kündigungsschutzgesetz: Eine Kündigung durch den Arbeitgeber braucht einen Grund – gilt in Betrieben mit mehr als 10 Arbeitnehmern nach 6 Monaten Beschäftigung."],
+ ["Besonderer Kündigungsschutz","Für einige Gruppen gelten eigene Gesetze: Mutterschutzgesetz (Schwangere), Bundeselterngeld- und Elternzeitgesetz (Elternzeit), Sozialgesetzbuch IX (schwerbehinderte Menschen), Berufsbildungsgesetz (Auszubildende). Betriebsratsmitglieder schützt ebenfalls das Kündigungsschutzgesetz."],
+ ["Zugang","Die Kündigungsfrist beginnt mit dem Tag, an dem die Kündigung beim Empfänger ankommt – nicht mit dem Datum auf dem Schreiben."]],
+rel:"Dauerbrenner: 5 von 6 Terminen (2019–2023)", skript:"Arbeitsskript Kap. 4: Fristentabelle, Merke-Boxen, Tabellen Kündigungsgründe und besonderer Kündigungsschutz, Übungen 4.1–4.3",
 items:[
  {t:"sc", q:"Frau Ott ist seit 18 Monaten bei der Talwerk GmbH; die Probezeit ist lange beendet. Die ordentliche Kündigung des Arbeitgebers geht ihr am 10.12.2026 zu. Zu welchem Termin wird sie wirksam?",
   o:[["31.12.2026",0,"Die Frist von 4 Wochen wäre nicht eingehalten."],["07.01.2027",0,"Die Frist ist richtig gezählt, aber nicht auf einen zulässigen Termin (15. oder Monatsende) aufgerundet."],["15.01.2027",1],["31.01.2027",0,"Das wäre die Stufe ab 2 Jahren (1 Monat zum Monatsende) – oder der 15. wurde übersehen."]],
@@ -156,20 +183,59 @@ items:[
   o:[["31.08.2026",0,"Hier wurde die Staffel des Arbeitgebers (5 Monate) angewandt – sie gilt nicht für den Arbeitnehmer."],["31.12.2026",0,"Hier wurde „ein Monat“ statt 4 Wochen gerechnet."],["03.01.2027",1],["04.01.2027",0,"Einen Tag zu spät: Ab dem 04.01. reichen die 4 Wochen nicht mehr bis zum 31.01."]],
   e:"Für den Arbeitnehmer gilt immer die Grundfrist von 4 Wochen (28 Tagen) zum 15. oder zum Monatsende (§ 622 Abs. 1 BGB). Die verlängerten Fristen nach Abs. 2 gelten nur für den Arbeitgeber. 31.01.2027 − 28 Tage = 03.01.2027.", s:"Skript Kap. 4, Merke-Box und Übung 4.1 b"},
  {t:"mc", q:"Welche Aussagen sind richtig?",
-  o:[["Die Kündigung ist eine einseitige, empfangsbedürftige Willenserklärung; sie wird mit dem Zugang wirksam.",1],["Vor einer verhaltensbedingten Kündigung ist in der Regel eine Abmahnung nötig.",1],["Bei einer betriebsbedingten Kündigung muss der Arbeitgeber eine Sozialauswahl treffen.",1],["Eine außerordentliche Kündigung muss mit einer Frist von zwei Wochen ausgesprochen werden.",0],["Eine Kündigung des Arbeitgebers wird erst wirksam, wenn der Arbeitnehmer zustimmt.",0],["Kündigt der Arbeitnehmer, muss er einen Grund nach dem Kündigungsschutzgesetz nennen.",0]],
-  e:"Die außerordentliche Kündigung ist in der Regel fristlos; die zwei Wochen sind die Frist, innerhalb derer sie nach Kenntnis des Grundes erklärt werden muss (§ 626 Abs. 2 BGB). Das KSchG schützt vor der Kündigung durch den Arbeitgeber; für die eigene Kündigung braucht der Arbeitnehmer keinen Grund. Sozialauswahl: § 1 Abs. 3 KSchG.", s:"Skript Kap. 4, Einleitung, Kündigungsgründe, Merke-Box Sozialauswahl"},
+  o:[["Die ordentliche Kündigung beendet das Arbeitsverhältnis nach Ablauf der Kündigungsfrist, die außerordentliche in der Regel fristlos aus wichtigem Grund.",1],["Gegen eine Kündigung kann der Arbeitnehmer innerhalb von drei Wochen nach Zugang Klage beim Arbeitsgericht erheben.",1],["Bei der Sozialauswahl zählen Betriebszugehörigkeit, Lebensalter, Unterhaltspflichten und Schwerbehinderung.",1],["Vor einer verhaltensbedingten Kündigung ist in der Regel eine Abmahnung nötig.",1],["Eine außerordentliche Kündigung muss mit einer Frist von zwei Wochen ausgesprochen werden.",0],["Bei der Sozialauswahl wird dem Mitarbeiter mit der schlechtesten Arbeitsleistung gekündigt.",0],["Eine Kündigung des Arbeitgebers wird erst wirksam, wenn der Arbeitnehmer zustimmt.",0]],
+  e:"Ordentlich: mit Kündigungsfrist (§ 622 BGB). Außerordentlich: in der Regel fristlos aus wichtigem Grund; die zwei Wochen sind die Frist, innerhalb derer sie nach Kenntnis des Grundes erklärt werden muss (§ 626 BGB). Klagefrist: § 4 KSchG. Sozialauswahl: § 1 Abs. 3 KSchG – die Leistung gehört nicht zu den Kriterien.", s:"Skript Kap. 4, Einleitung, Merke-Box Sozialauswahl und Klagefrist"},
  {t:"sc", q:"Ein Handwerksbetrieb beschäftigt regelmäßig 9 Vollzeitkräfte. Ein Mitarbeiter, seit drei Jahren dort, erhält eine ordentliche Kündigung. Gilt der allgemeine Kündigungsschutz?",
   o:[["Nein – der Betrieb beschäftigt nicht mehr als 10 Arbeitnehmer.",1],["Ja – das Arbeitsverhältnis besteht länger als sechs Monate.",0],["Ja – das Kündigungsschutzgesetz gilt in jedem Betrieb.",0],["Nein – das Kündigungsschutzgesetz gilt erst nach fünf Jahren Betriebszugehörigkeit.",0]],
   e:"Beide Voraussetzungen müssen vorliegen: mehr als 10 Arbeitnehmer (§ 23 Abs. 1 KSchG) und mehr als sechs Monate Beschäftigung (§ 1 Abs. 1 KSchG). Hier fehlt die erste.", s:"Skript Kap. 4, allgemeiner Kündigungsschutz"},
  {t:"zu", q:"Ordnen Sie den Kündigungsgrund zu (§ 1 Abs. 2 KSchG).", c:["personenbedingt","verhaltensbedingt","betriebsbedingt"],
   r:[["Ein Berufskraftfahrer verliert dauerhaft seine Fahrerlaubnis.",0],["Eine Mitarbeiterin fehlt trotz Abmahnung erneut unentschuldigt.",1],["Die Lackiererei wird stillgelegt.",2],["Ein Mitarbeiter ist dauerhaft krankheitsbedingt arbeitsunfähig.",0],["Ein Mitarbeiter verweigert wiederholt zugewiesene Arbeiten.",1],["Wegen anhaltenden Auftragsrückgangs fallen zwei Stellen weg.",2]],
   e:"Personenbedingt: vom Arbeitnehmer nicht steuerbar. Verhaltensbedingt: steuerbares Fehlverhalten, in der Regel nach Abmahnung. Betriebsbedingt: Der Arbeitsplatz fällt weg, mit Sozialauswahl.", s:"Skript Kap. 4, Tabelle Kündigungsgründe"},
- {t:"zu", q:"Ordnen Sie die Rechtsgrundlage des besonderen Kündigungsschutzes zu.", c:["§ 17 MuSchG","§ 18 BEEG","§ 168 SGB IX","§ 15 KSchG","§ 22 BBiG"],
+ {t:"zu", q:"Welches Gesetz schützt die Person besonders vor einer Kündigung?", c:["Mutterschutzgesetz","Bundeselterngeld- und Elternzeitgesetz","Sozialgesetzbuch IX (Schwerbehinderte)","Kündigungsschutzgesetz","Berufsbildungsgesetz"],
   r:[["Mitarbeiterin im vierten Schwangerschaftsmonat",0],["Mitarbeiter in Elternzeit",1],["schwerbehinderter Mitarbeiter, seit zwei Jahren im Betrieb",2],["Mitglied des Betriebsrats",3],["Auszubildende nach Ende der Probezeit",4]],
-  e:"Schwangerschaft und Elternzeit: Kündigungsverbot, Ausnahme nur durch die Behörde. Schwerbehinderte: vorherige Zustimmung des Integrationsamts. Betriebsrat: ordentliche Kündigung ausgeschlossen, außerordentliche nur mit Zustimmung (§ 103 BetrVG). Auszubildende: nach der Probezeit nur aus wichtigem Grund.", s:"Skript Kap. 4, Tabelle besonderer Kündigungsschutz, Übung 4.3"},
+  e:"Schwangere: Kündigungsverbot (§ 17 MuSchG). Elternzeit: Kündigungsverbot (§ 18 BEEG). In beiden Fällen kann nur eine Behörde ausnahmsweise zustimmen. Schwerbehinderte: Kündigung nur mit vorheriger Zustimmung des Integrationsamts (§ 168 SGB IX). Betriebsratsmitglieder: ordentliche Kündigung ausgeschlossen (§ 15 KSchG). Auszubildende: nach der Probezeit nur aus wichtigem Grund (§ 22 BBiG).", s:"Skript Kap. 4, Tabelle besonderer Kündigungsschutz, Übung 4.3"},
+ {t:"zu", q:"Die Talwerk GmbH möchte den folgenden Personen ordentlich kündigen. Was gilt jeweils?", c:["Kündigungsverbot (Ausnahme nur durch Behörde)","nur mit Zustimmung des Integrationsamts","ordentliche Kündigung ausgeschlossen","nur aus wichtigem Grund"],
+  r:[["Mitarbeiterin, die dem Arbeitgeber ihre Schwangerschaft mitgeteilt hat",0],["Mitarbeiter in Elternzeit",0],["schwerbehinderter Mitarbeiter, seit drei Jahren im Betrieb",1],["Mitglied des Betriebsrats",2],["Auszubildender im zweiten Ausbildungsjahr, dem wegen Auftragsmangels gekündigt werden soll",3]],
+  e:"Für alle Fälle heißt das: Eine ordentliche Kündigung ist so nicht möglich. Beim Auszubildenden ist Auftragsmangel kein wichtiger Grund. Beim Betriebsratsmitglied ginge nur eine außerordentliche Kündigung mit Zustimmung des Betriebsrats (§ 103 BetrVG).", s:"Skript Kap. 4, Tabelle besonderer Kündigungsschutz, Übung 4.3"},
  {t:"open", q:"Erläutern Sie den Unterschied zwischen einer personen- und einer verhaltensbedingten Kündigung mit je einem Beispiel. Erklären Sie, warum vor einer verhaltensbedingten Kündigung in der Regel abgemahnt werden muss.",
   m:"Personenbedingt: Der Grund liegt in der Person, der Arbeitnehmer kann ihn nicht steuern (z. B. dauerhafte krankheitsbedingte Arbeitsunfähigkeit, Verlust der Fahrerlaubnis eines Berufskraftfahrers). Verhaltensbedingt: steuerbares Fehlverhalten (z. B. wiederholtes Zuspätkommen, Arbeitsverweigerung, unentschuldigtes Fehlen). Die Abmahnung rügt das Fehlverhalten und droht die Kündigung an; erst wenn der Arbeitnehmer danach erneut gleichartig verstößt, ist eine negative Zukunftsprognose begründet und die Kündigung sozial gerechtfertigt (§ 1 Abs. 2 KSchG). Bei personenbedingten Gründen wäre eine Abmahnung sinnlos, weil der Arbeitnehmer sein Verhalten nicht ändern kann.",
   k:["beide Arten mit dem Abgrenzungsmerkmal „steuerbar“ erklärt","je ein passendes Beispiel","Funktion der Abmahnung (Rüge und Kündigungsandrohung)","Zukunftsprognose bzw. mildere Mittel erwähnt"]}
+]},
+{ id:5, title:"Entlohnung",
+intro:[["Zeitlohn","Bezahlt wird die Arbeitszeit: Stundenlohn × Stunden. Sinnvoll, wenn Qualität und Sorgfalt wichtiger sind als die Menge oder wenn sich die Leistung nicht messen lässt."],
+ ["Akkordlohn","Bezahlt wird die Menge. Einzelakkord: Die Stückzahl einer Person zählt. Gruppenakkord: Die gemeinsame Stückzahl einer Gruppe zählt; der Gruppenverdienst wird danach aufgeteilt."],
+ ["Normalleistung / Vorgabezeit","Normalleistung: Stückzahl je Stunde, die ein eingearbeiteter Mitarbeiter auf Dauer schafft. Vorgabezeit: Minuten, die je Stück gutgeschrieben werden.<br>Vorgabezeit = 60 min ÷ Normalleistung"],
+ ["Akkordrichtsatz","Stundenverdienst bei genau der Normalleistung.<br>Akkordrichtsatz = Grundlohn + Akkordzuschlag (in % des Grundlohns)"],
+ ["Stückgeldakkord","Je Stück gibt es einen festen Geldbetrag.<br>Stückgeldsatz = Akkordrichtsatz ÷ Normalleistung<br>Verdienst = Stückzahl × Stückgeldsatz"],
+ ["Stückzeitakkord","Je Stück wird die Vorgabezeit gutgeschrieben und in Geld umgerechnet.<br>Minutenfaktor = Akkordrichtsatz ÷ 60<br>Verdienst = Stückzahl × Vorgabezeit × Minutenfaktor<br>Den Minutenfaktor nicht vorzeitig runden."],
+ ["Leistungsgrad","Wie viel Prozent der Normalleistung jemand schafft. Bei 120 % liegt der Akkordverdienst 20 % über dem Akkordrichtsatz."],
+ ["Prämienlohn","Fester Grundlohn plus Prämie für eine vereinbarte Mehrleistung. In der Prüfung meist: Ein vereinbarter Anteil der ersparten Zeit wird mit dem Grundlohn vergütet."],
+ ["Achtung „Mindestlohn“","Fragt eine Aufgabe nach dem „Mindestlohn“ im Akkord, ist der Grundlohn ohne Akkordzuschlag gemeint – nicht der gesetzliche Mindestlohn nach dem Mindestlohngesetz."]],
+rel:"Dauerbrenner: 6 von 6 Terminen (2019–2023)", skript:"Arbeitsskript Kap. 5: Merke-Box, drei Musterbeispiele (Akkord, Gruppenakkord, Prämienlohn), Übungen 5.1–5.5",
+items:[
+ {t:"zu", q:"Welche Lohnform passt am besten?", c:["Zeitlohn","Akkordlohn","Prämienlohn"],
+  r:[["Eine Laborantin prüft Materialproben; Genauigkeit ist wichtiger als Tempo.",0],["Ein Mitarbeiter bestückt Platinen in immer gleichen, gut messbaren Arbeitsgängen und bestimmt sein Tempo selbst.",1],["Ein Lagerarbeiter erhält zum Stundenlohn einen Zuschlag, wenn er beim Kommissionieren weniger Fehler macht als vereinbart.",2],["Eine Sachbearbeiterin im Einkauf hat jeden Tag wechselnde Aufgaben.",0],["An einer Montagelinie wird die Stückzahl vergütet, die eine Gruppe gemeinsam fertigt.",1],["Ein Maschinenführer erhält zum Grundlohn die Hälfte der eingesparten Vorgabezeit vergütet.",2]],
+  e:"Zeitlohn, wenn Qualität vor Menge geht oder die Leistung nicht messbar ist. Akkordlohn, wenn die Menge messbar und beeinflussbar ist – einzeln oder als Gruppe. Prämienlohn: Grundlohn plus Prämie für eine vereinbarte Mehrleistung, z. B. Qualität oder ersparte Zeit.", s:"Skript Kap. 5, Einleitung und Grafik Lohnformen"},
+ {t:"mc", q:"Die Talwerk GmbH prüft, ob sie in der Montage Akkordlohn einführen kann. Welche Aussagen beschreiben Voraussetzungen für den Akkordlohn?",
+  o:[["Der Arbeitsablauf ist gleichartig, wiederholt sich und lässt sich im Voraus messen.",1],["Die Mitarbeiter beherrschen den Arbeitsablauf vollständig.",1],["Die Mitarbeiter können die Menge durch ihr Arbeitstempo beeinflussen.",1],["Die Leistung lässt sich messen und einer Person oder Gruppe zurechnen.",1],["Die Qualität der Arbeit ist wichtiger als die Menge.",0,"Dann ist Zeitlohn geeigneter – Akkord verleitet zum Tempo auf Kosten der Qualität."],["Das Arbeitstempo wird vollständig von einem Fließband vorgegeben.",0,"Dann kann der Mitarbeiter die Menge nicht beeinflussen."],["Die Mitarbeiter sind neu und noch in der Einarbeitung.",0,"Es fehlt die Akkordreife."]],
+  e:"Akkordfähigkeit (gleichartig, wiederholbar, messbar), Akkordreife (Ablauf voll beherrscht), beeinflussbare Menge, messbare und zurechenbare Leistung.", s:"Skript Kap. 5, Merke-Box und Übung 5.1 b"},
+ {t:"za", q:"In der Montage der Talwerk GmbH beträgt der Grundlohn 17,50 € je Stunde, der Akkordzuschlag 20 %. Die Normalleistung liegt bei 15 Stück je Stunde. Ein Mitarbeiter fertigt im Juni 2.550 Stück. Berechnen Sie seinen Bruttolohn im Stückgeldakkord.", unit:"€", a:3570,
+  e:"Akkordrichtsatz: 17,50 € × 1,20 = 21,00 €. Stückgeldsatz: 21,00 € ÷ 15 = 1,40 €. Bruttolohn: 2.550 × 1,40 € = 3.570,00 €. Typischer Fehler: Akkordzuschlag vergessen (17,50 € ÷ 15 × 2.550 = 2.975,00 €).", s:"Skript Kap. 5, Musterbeispiel Akkord und Übung 5.1"},
+ {t:"za", q:"In der Endkontrolle gilt ein Grundlohn von 17,00 € je Stunde und ein Akkordzuschlag von 25 %. Die Normalleistung beträgt 12 Stück je Stunde. Eine Mitarbeiterin prüft an einem 8-Stunden-Tag 108 Stück. Berechnen Sie ihren Tagesverdienst im Stückzeitakkord.", unit:"€", a:191.25,
+  e:"Akkordrichtsatz: 17,00 € × 1,25 = 21,25 €. Minutenfaktor: 21,25 € ÷ 60 = 0,354166… €. Vorgabezeit: 60 ÷ 12 = 5 min. Verdienst: 108 × 5 min × 0,354166… € = 540 min × 0,354166… € = 191,25 €. Probe: 540 Vorgabeminuten sind 9 Stunden; 9 × 21,25 € = 191,25 €. Typischer Fehler: Minutenfaktor auf 0,35 € gerundet (189,00 €) oder auf 0,36 € (194,40 €). Leistungsgrad: 540 ÷ 480 = 112,5 %.", s:"Skript Kap. 5, Musterbeispiel (Alternative Stückzeitakkord) und Übung 5.2"},
+ {t:"sc", q:"Der Akkordrichtsatz in der Lackiererei beträgt 22,50 € je Stunde, der Akkordzuschlag 25 %. Wie hoch ist der Mindestlohn je Stunde?",
+  o:[["18,00 €",1],["16,88 €",0,"Hier wurden 25 % vom Akkordrichtsatz abgezogen. Der Zuschlag bezieht sich aber auf den Grundlohn: also durch 1,25 teilen."],["13,90 €",0,"Das ist der gesetzliche Mindestlohn 2026. Gemeint ist hier der Grundlohn ohne Akkordzuschlag."],["28,13 €",0,"Hier wurde der Zuschlag noch einmal aufgeschlagen statt herausgerechnet."]],
+  e:"Mindestlohn im Akkord = Grundlohn = Akkordrichtsatz ÷ (1 + Akkordzuschlag) = 22,50 € ÷ 1,25 = 18,00 €. Probe: 18,00 € × 1,25 = 22,50 €.", s:"Skript Kap. 5, Hinweis „Achtung Begriffe“ und Übung 5.2 b"},
+ {t:"za", q:"Im Zuschnitt gilt Prämienlohn: Grundlohn 17,00 € je Stunde, Vorgabezeit 16 Minuten je Stück, Prämie 50 % des ersparten Zeitlohns. Eine Mitarbeiterin fertigt an einem 8-Stunden-Tag 36 Stück. Berechnen Sie ihren Bruttostundenlohn.", unit:"€", a:18.7,
+  e:"Vorgabezeit gesamt: 36 × 16 min = 576 min = 9,6 Std. Ersparte Zeit: 9,6 − 8,0 = 1,6 Std. Prämie: 1,6 × 17,00 € × 50 % = 13,60 €. Tageslohn: 8 × 17,00 € + 13,60 € = 149,60 €. Stundenlohn: 149,60 € ÷ 8 = 18,70 €. Typischer Fehler: die ganze ersparte Zeit vergütet statt 50 % (20,40 €).", s:"Skript Kap. 5, Musterbeispiel Prämienlohn und Übung 5.4"},
+ {t:"za", q:"In der Vormontage arbeiten drei Beschäftigte im Gruppenakkord: Herr Arnold (Grundlohn 21,00 €, 160 Std.), Frau Brehm (18,00 €, 120 Std. – sie arbeitet in Teilzeit) und Herr Celik (16,00 €, 160 Std.). Die Gruppe fertigt 4.040 Stück bei einem Stückgeldsatz von 2,30 €. Der Gruppenverdienst wird nach den Grundlohnanteilen verteilt. Berechnen Sie den Anteil von Frau Brehm.", unit:"€", a:2484,
+  e:"Gruppenverdienst: 4.040 × 2,30 € = 9.292,00 €. Grundlohnsummen: 3.360,00 € + 2.160,00 € + 2.560,00 € = 8.080,00 €. Verteilungsfaktor: 9.292,00 € ÷ 8.080,00 € = 1,15 (die Gruppe lag 15 % über der Normalleistung). Anteil Brehm: 2.160,00 € × 1,15 = 2.484,00 €. Probe: 3.864,00 + 2.484,00 + 2.944,00 = 9.292,00 €. Typischer Fehler: gleich verteilt (3.097,33 €) oder nur nach Stundenlöhnen ohne Stunden (3.041,02 €).", s:"Skript Kap. 5, Musterbeispiel Gruppenakkord und Übung 5.3"},
+ {t:"mc", q:"Welche Aussagen zu Einzel- und Gruppenakkord sind richtig?",
+  o:[["Gruppenakkord bietet sich an, wenn mehrere Beschäftigte gemeinsam an einem Erzeugnis arbeiten und die Menge des Einzelnen nicht feststellbar ist.",1],["Wer bei gleichem Grundlohn mehr Stunden gearbeitet hat, erhält beim Gruppenakkord einen größeren Anteil.",1],["Ein Verteilungsfaktor von 1,1 bedeutet, dass die Gruppe 10 % über der Normalleistung lag.",1],["Beim Gruppenakkord kann ein schwächeres Mitglied den Verdienst der ganzen Gruppe senken.",1],["Beim Gruppenakkord erhält jedes Mitglied immer denselben Betrag.",0],["Beim Einzelakkord hängt der Verdienst nicht von der eigenen Stückzahl ab.",0],["Wer im Akkord genau die Normalleistung erreicht, verdient nur den Grundlohn.",0]],
+  e:"Gruppenakkord, wenn die Menge nicht einzeln zurechenbar ist; verteilt wird meist nach Grundlohnsummen (Stundenlohn × Stunden). Der Verteilungsfaktor zeigt den Leistungsgrad der Gruppe. Bei genau der Normalleistung verdient man den Akkordrichtsatz, also Grundlohn plus Akkordzuschlag.", s:"Skript Kap. 5, Merke-Box und Übung 5.3 c"},
+ {t:"open", q:"Die Talwerk GmbH überlegt, in der Montage vom Zeitlohn auf Akkordlohn umzustellen. Beurteilen Sie den Akkordlohn: Erläutern Sie je einen Vorteil und einen Nachteil aus Sicht der Arbeitnehmer und aus Sicht des Arbeitgebers.",
+  m:"Arbeitnehmer – Vorteil: Wer mehr leistet, verdient mehr; der Verdienst lässt sich durch eigene Leistung steigern. Nachteil: Leistungsdruck und Gesundheitsgefahr durch dauerhaft hohes Tempo; der Verdienst schwankt, z. B. bei Krankheit, Materialmangel oder Maschinenstörung. Arbeitgeber – Vorteil: höhere Produktivität; die Lohnkosten je Stück stehen fest und lassen sich gut kalkulieren. Nachteil: Die Qualität kann leiden, Maschinen und Material werden stärker beansprucht; dazu kommen Aufwand für Zeitstudien und Kontrolle sowie Streit um die Vorgabezeiten.",
+  k:["Vorteil aus Sicht der Arbeitnehmer erläutert","Nachteil aus Sicht der Arbeitnehmer erläutert","Vorteil aus Sicht des Arbeitgebers erläutert","Nachteil aus Sicht des Arbeitgebers erläutert"]}
 ]}
 ];
 
@@ -187,7 +253,7 @@ function autoCount(ch){return ch.items.filter(x=>x.t!=="open").length;}
 function home(){
   cur=null;
   let h=`<div class="kicker">Betriebswirtschaft · Personal</div><h1>Selbsttest Personal</h1>
-  <p class="meta">Kapitel 1–4 des Arbeitsskripts · ca. 20–25 Minuten</p>
+  <p class="meta">Kapitel 1–5 des Arbeitsskripts · ca. 35 Minuten</p>
   <div class="box">Arbeiten Sie die Kapitel nacheinander oder einzeln durch. Nach jeder Aufgabe sehen Sie sofort die Lösung mit Erklärung. Am Ende jedes Kapitels zeigt eine Ampel, wie fit Sie sind.<br>Die Gesetzestextsammlung dürfen Sie benutzen. Es werden keine Daten gespeichert oder übertragen.</div>`;
   CHAPTERS.forEach(ch=>{
     const r=state.res[ch.id]; let badge="";
@@ -203,8 +269,17 @@ function home(){
 
 function start(id){
   const ch=CHAPTERS.find(c=>c.id===id);
-  cur={ch, i:0, pts:0, open:[0,0], order:ch.items.map(it=>it.o?shuffle(it.o.map((x,k)=>k)):null)};
-  show();
+  cur={ch, i:0, pts:0, open:[0,0], order:ch.items.map(it=>it.o?shuffle(it.o.map((x,k)=>k)):null), rows:ch.items.map(it=>it.r?shuffle(it.r.map((x,k)=>k)):null)};
+  if(ch.intro) intro(); else show();
+}
+
+function intro(){
+  const ch=cur.ch;
+  let h=`<div class="kicker">Kapitel ${ch.id} · ${esc(ch.title)}</div><h2>Kurz erklärt</h2>
+  <p class="meta">Lesen Sie die Begriffe kurz durch – Sie brauchen sie in den Aufgaben.</p><table><tbody>`;
+  ch.intro.forEach(([t,d])=>{h+=`<tr><td style="width:34%"><b>${esc(t)}</b></td><td>${d}</td></tr>`;});
+  h+=`</tbody></table><div class="row"><button class="btn" id="go">Los geht’s</button><button class="btn sec" id="back">Zur Übersicht</button></div>`;
+  app.innerHTML=h; document.getElementById("go").onclick=show; document.getElementById("back").onclick=home; window.scrollTo(0,0);
 }
 
 function show(){
@@ -219,7 +294,7 @@ function show(){
       h+=`<label class="opt" data-k="${k}"><input type="${it.t==="sc"?"radio":"checkbox"}" name="o" value="${k}"><span>${esc(it.o[k][0])}<span class="why"></span></span></label>`;
     });
   } else if(it.t==="zu"){
-    it.r.forEach((row,k)=>{
+    cur.rows[i].forEach(k=>{ const row=it.r[k];
       h+=`<div class="zu" data-k="${k}"><label for="z${k}">${esc(row[0])}</label><select id="z${k}"><option value="">– bitte wählen –</option>${it.c.map((c,j)=>`<option value="${j}">${esc(c)}</option>`).join("")}</select><div class="sol"></div></div>`;
     });
   } else if(it.t==="za"){
@@ -237,6 +312,9 @@ function show(){
   const za=document.getElementById("za"); if(za) za.addEventListener("keydown",e=>{if(e.key==="Enter")check();});
   window.scrollTo(0,0);
 }
+
+const LAWS=[["SGB IX","Sozialgesetzbuch IX"],["BGB","Bürgerliches Gesetzbuch"],["KSchG","Kündigungsschutzgesetz"],["AGG","Allgemeines Gleichbehandlungsgesetz"],["BetrVG","Betriebsverfassungsgesetz"],["NachwG","Nachweisgesetz"],["TzBfG","Teilzeit- und Befristungsgesetz"],["GewO","Gewerbeordnung"],["MuSchG","Mutterschutzgesetz"],["BEEG","Bundeselterngeld- und Elternzeitgesetz"],["BBiG","Berufsbildungsgesetz"]];
+function laws(t){ LAWS.forEach(([a,n])=>{ const re=new RegExp("(^|[^\\wÄÖÜäöü(-])("+a.replace(" ","\\s")+")(?![\\wÄÖÜäöü-])(?!\\s\\()"); const m=re.exec(t); if(!m) return; const end=m.index+m[0].length; const ins = t[end]===")" ? ", "+n : " ("+n+")"; t=t.slice(0,end)+ins+t.slice(end); }); return t; }
 
 function verdict(p){return p>=0.999?["ok","Richtig."]:p>0?["mid","Teilweise richtig."]:["bad","Leider nicht richtig."];}
 
@@ -260,7 +338,7 @@ function check(){
     const sels=[...app.querySelectorAll(".zu select")];
     if(sels.some(s=>s.value==="")){alert0("Bitte ordnen Sie jede Zeile zu.");return;}
     let good=0;
-    sels.forEach((s,k)=>{const ok=+s.value===it.r[k][1]; const box=s.parentNode; s.disabled=true;
+    sels.forEach(s=>{const k=+s.id.slice(1); const ok=+s.value===it.r[k][1]; const box=s.parentNode; s.disabled=true;
       box.classList.add(ok?"right":"wrong"); if(ok)good++; else box.querySelector(".sol").textContent="Richtig: "+it.c[it.r[k][1]];});
     p=good/it.r.length; extra=`${good} von ${it.r.length} Zuordnungen richtig.`;
   } else if(it.t==="za"){
@@ -272,14 +350,14 @@ function check(){
     extra=`Ihre Eingabe: ${fmt(v)} · Lösung: ${fmt(it.a)} ${esc(it.unit)}`;
   } else if(it.t==="open"){
     app.querySelector("textarea").readOnly=true;
-    document.getElementById("fb").innerHTML=`<div class="fb"><div class="v">Musterlösung</div><p>${esc(it.m)}</p></div>
+    document.getElementById("fb").innerHTML=`<div class="fb"><div class="v">Musterlösung</div><p>${esc(laws(it.m))}</p></div>
       <div class="check"><div class="hint">Haken Sie ab, was Ihre Antwort enthält:</div>${it.k.map((k,j)=>`<label><input type="checkbox" data-j="${j}"><span>${esc(k)}</span></label>`).join("")}</div>`;
     nextBtn(()=>{const c=app.querySelectorAll(".check input:checked").length; cur.open=[cur.open[0]+c,cur.open[1]+it.k.length];});
     return;
   }
   cur.pts+=p;
   const [cls,txt]=verdict(p);
-  document.getElementById("fb").innerHTML=`<div class="fb"><div class="v ${cls}">${txt}</div>${extra?`<p>${extra}</p>`:""}<p>${esc(it.e)}</p><div class="src">Nachlesen: ${esc(it.s)}</div></div>`;
+  document.getElementById("fb").innerHTML=`<div class="fb"><div class="v ${cls}">${txt}</div>${extra?`<p>${extra}</p>`:""}<p>${esc(laws(it.e))}</p><div class="src">Nachlesen: ${esc(it.s)}</div></div>`;
   nextBtn();
 }
 
